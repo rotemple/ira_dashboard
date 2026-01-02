@@ -37,4 +37,4 @@ container.dataframe(df)
     # Display basic statistics
 container.subheader("Descriptive Statistics: " + option)
 container.write(df.describe())
-    
+container.write('Streamlit app created by Ryan Omizo')    
