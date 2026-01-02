@@ -23,8 +23,7 @@ option = st.sidebar.selectbox(
      'IRAhandle_tweets_10.csv','IRAhandle_tweets_11.csv','IRAhandle_tweets_12.csv',
      'IRAhandle_tweets_13.csv',))
 
-#st.write("Upload a CSV file to begin data exploration.")
-
+st.sidebar.write('See https://github.com/rotemple/russian-troll-tweets for the complete dataset description.')
 # File uploader widget in the sidebar
 
 url = 'https://raw.githubusercontent.com/fivethirtyeight/russian-troll-tweets/refs/heads/master/'
