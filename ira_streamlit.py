@@ -62,6 +62,10 @@ st.sidebar.write('See https://github.com/rotemple/russian-troll-tweets for the c
 
 url = 'https://raw.githubusercontent.com/fivethirtyeight/russian-troll-tweets/refs/heads/master/'
 df = pd.read_csv(url+option)
+
+df['col1'] = list(range(len(df)))
+tweets = df.content.tolist()
+
     
     # Display a preview of the data
 container = st.container()    
