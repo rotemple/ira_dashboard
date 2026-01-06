@@ -5,10 +5,47 @@ Created on Fri Jan  2 14:43:46 2026
 
 @author: tuk35906
 """
-
 import streamlit as st
 import pandas as pd
+from transformers import pipeline
+import re
+import itertools
+from collections import Counter
 
+def flatten_list(somelist):
+        if any(isinstance(el, list) for el in somelist) == False:
+            return somelist
+        flat_list = list(itertools.chain(*somelist))
+        return flat_list
+
+def chunks(l, n):
+    """Yield successive n-sized chunks from l."""
+    for i in range(0, len(l), n):
+        yield l[i:i + n]
+        
+def mention_extract(x):
+    mentions = []
+    # Loop over the words in the tweet
+    for i in x.split():
+        ht = re.findall(r"(@\w+)", i)
+        if ht == []:
+            pass
+        else:
+            mentions.append(ht)
+
+    return mentions
+
+def hashtag_extract(x):
+    hashtags = []
+    # Loop over the words in the tweet
+    for i in x.split():
+        ht = re.findall(r"(#\w+)", i)
+        if ht == []:
+            pass
+        else:
+            hashtags.append(ht)
+
+    return hashtags
 # Set the title of the Streamlit app
 st.title("📊 Data Dashboard to Browse fivethirtyeights' IRA Tweet Dataset")
 st.subheader('Fivethirtyeight/russian-troll-tweets. (2025). [Computer software]. FiveThirtyEight. https://github.com/fivethirtyeight/russian-troll-tweets (Original work published 2018)')
@@ -48,7 +85,6 @@ try:
 except:
     st.subheader("hashtag extraction error!")
 #display top-50 mentions
-
 try:
     mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
     counts = pd.DataFrame(Counter(mentions).most_common()[:50])
@@ -59,6 +95,5 @@ try:
 except:
     st.subheader('mention extraction error!')
 
-container.write('Streamlit app created by Ryan Omizo')  
 
 container.write('Streamlit app created by Ryan Omizo')    
