@@ -37,4 +37,28 @@ container.dataframe(df)
     # Display basic statistics
 container.subheader("Descriptive Statistics: " + option)
 container.write(df.describe())
+
+try:
+    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
+    hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
+    hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
+    
+    st.subheader('Top-50 Hashtags for  '+option)
+    st.dataframe(hcounts) 
+except:
+    st.subheader("hashtag extraction error!")
+#display top-50 mentions
+
+try:
+    mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
+    counts = pd.DataFrame(Counter(mentions).most_common()[:50])
+    counts = counts.rename(columns={0:'mention',1:'count'})
+    
+    st.subheader('Top-50 Mentions for  '+option)
+    st.dataframe(counts)    
+except:
+    st.subheader('mention extraction error!')
+
+container.write('Streamlit app created by Ryan Omizo')  
+
 container.write('Streamlit app created by Ryan Omizo')    
