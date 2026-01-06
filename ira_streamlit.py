@@ -7,7 +7,6 @@ Created on Fri Jan  2 14:43:46 2026
 """
 import streamlit as st
 import pandas as pd
-from transformers import pipeline
 import re
 import itertools
 from collections import Counter
