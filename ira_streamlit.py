@@ -60,7 +60,7 @@ option = st.sidebar.selectbox(
 st.sidebar.write('See https://github.com/rotemple/russian-troll-tweets for the complete dataset description.')
 # File uploader widget in the sidebar
 
-url = 'https://raw.githubusercontent.com/fivethirtyeight/russian-troll-tweets/refs/heads/master/'
+url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
 df = pd.read_csv(url+option)
 
 df['col1'] = list(range(len(df)))
