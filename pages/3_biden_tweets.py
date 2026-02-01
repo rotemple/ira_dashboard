@@ -57,9 +57,8 @@ def hashtag_extract(x):
     return hashtags
 # Set the title of the Streamlit app
 st.title("📊 Data Dashboard to Browse Trump Tweets")
-st.subheader('Biden Tweets')
-st.write('Joe Biden Tweets (2007—2020). (n.d.). Retrieved February 1, 2026, from https://www.kaggle.com/datasets/rohanrao/joe-biden-tweets
-')
+st.subheader('Biden Tweets (2007-2020)')
+st.write('Joe Biden Tweets (2007—2020). (n.d.). Retrieved February 1, 2026, from https://www.kaggle.com/datasets/rohanrao/joe-biden-tweets')
 
 # File uploader widget in the sidebar
 
