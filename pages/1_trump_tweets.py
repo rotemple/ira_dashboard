@@ -56,15 +56,16 @@ def hashtag_extract(x):
 
     return hashtags
 # Set the title of the Streamlit app
-st.title("📊 Data Dashboard to Browse fivethirtyeights' IRA Tweet Dataset")
-st.subheader('Fivethirtyeight/russian-troll-tweets. (2025). [Computer software]. FiveThirtyEight. https://github.com/fivethirtyeight/russian-troll-tweets (Original work published 2018)')
+st.title("📊 Data Dashboard to Browse Trump Tweets")
+st.subheader('Tweets from Trump Twitter Archive')
+st.write('Brown, B. (n.d.). Search on Trump Twitter Archive. Retrieved February 1, 2026, from //www.thetrumparchive.com')
+
 
 
 st.sidebar.write('See https://github.com/rotemple/russian-troll-tweets for the complete dataset description.')
 # File uploader widget in the sidebar
 
-url = 'https://drive.google.com/file/d/1xRKHaP-QwACMydlDnyFPEaFdtskJuBa6/view'
-df = pd.read_csv(url)
+df = pd.read_csv('https://github.com/rotemple/ira_dashboard/blob/main/pages/tweets_01-08-2021.csv')
 
 df['col1'] = list(range(len(df)))
 tweets = df.content.tolist()
