@@ -68,7 +68,7 @@ st.sidebar.write('See https://github.com/rotemple/russian-troll-tweets for the c
 df = pd.read_csv('https://github.com/rotemple/ira_dashboard/blob/main/pages/tweets_01-08-2021.csv',on_bad_lines='skip')
 
 df['col1'] = list(range(len(df)))
-tweets = df.content.tolist()
+tweets = df.text.tolist()
 
     
     # Display a preview of the data
