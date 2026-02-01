@@ -9,7 +9,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.tokenize import wordpunct_tokenize
 st.set_page_config(
-  page_title="Trump Tweets",
+  page_title="Biden Tweets (2007-2020)",
   )
 
 stops = set(stopwords.words('english'))
