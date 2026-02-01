@@ -16,11 +16,13 @@ st.set_page_config(page_title='Political Communication Data Browser')
 # Set the title of the Streamlit app
 st.title("📊 Political Communication Data Browser")
 #st.subheader('Fivethirtyeight/russian-troll-tweets. (2025). [Computer software]. FiveThirtyEight. https://github.com/fivethirtyeight/russian-troll-tweets (Original work published 2018)')
-st.write("Explore:")
-st.write(['IRA Election Interference Tweets','Trump Tweets'])
+
     # Display a preview of the data
 container = st.container()    
 container.write('Select an option from the sidebar to browse a corpus of political and/or social media communications')
+container.markdown("## Explore:
+            - IRA Election Interference Tweets',
+            - Trump Tweets")
 
 
 container.write('Streamlit app created by Ryan Omizo')    
