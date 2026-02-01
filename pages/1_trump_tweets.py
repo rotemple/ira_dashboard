@@ -60,9 +60,6 @@ st.title("📊 Data Dashboard to Browse Trump Tweets")
 st.subheader('Tweets from Trump Twitter Archive')
 st.write('Brown, B. (n.d.). Search on Trump Twitter Archive. Retrieved February 1, 2026, from //www.thetrumparchive.com')
 
-
-
-st.sidebar.write('See https://github.com/rotemple/russian-troll-tweets for the complete dataset description.')
 # File uploader widget in the sidebar
 
 df = pd.read_csv('https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/pages/tweets_01-08-2021.csv',on_bad_lines='skip')
