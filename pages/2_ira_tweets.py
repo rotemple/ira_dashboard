@@ -16,7 +16,11 @@ from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.tokenize import wordpunct_tokenize
 
-
+try:
+  nltk.data.find('corpora/stopwords')
+except nltk.downloader.DownloadError:
+    nltk.download('stopwords')
+  
 stops = set(stopwords.words('english'))
 wn = WordNetLemmatizer()
 def preprocess(text):
