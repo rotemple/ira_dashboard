@@ -24,6 +24,7 @@ container.markdown("""
 ## Explore:
 - Trump Tweets
 - IRA Election Interference Tweets
+- Biden Tweets
 """)
 
 
