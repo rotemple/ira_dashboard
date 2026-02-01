@@ -90,6 +90,7 @@ container.subheader("Data Preview: " + option)
 container.dataframe(df)
 container.subheader("Data Preview: " + option)
 
+cleaned = [preprocess(tweet) for tweet in tweets]
 wordcloud = WordCloud().generate(' '.join(cleaned))
 
 plt.axis("off")
