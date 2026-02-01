@@ -65,7 +65,7 @@ st.write('Brown, B. (n.d.). Search on Trump Twitter Archive. Retrieved February 
 st.sidebar.write('See https://github.com/rotemple/russian-troll-tweets for the complete dataset description.')
 # File uploader widget in the sidebar
 
-df = pd.read_csv('https://github.com/rotemple/ira_dashboard/blob/main/pages/tweets_01-08-2021.csv')
+df = pd.read_csv('https://github.com/rotemple/ira_dashboard/blob/main/pages/tweets_01-08-2021.csv',on_bad_lines='skip')
 
 df['col1'] = list(range(len(df)))
 tweets = df.content.tolist()
