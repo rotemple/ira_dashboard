@@ -76,13 +76,13 @@ container = st.container()
 container.subheader("Data Preview")
 container.dataframe(df)
 
-wordcloud = WordCloud().generate(' '.join(cleaned))
+#wordcloud = WordCloud().generate(' '.join(cleaned))
 
-plt.axis("off")
+#plt.axis("off")
 
-fig = plt.figure()
-plt.imshow(wordcloud, interpolation="bilinear")
-plt.axis("off")
+# fig = plt.figure()
+# plt.imshow(wordcloud, interpolation="bilinear")
+# plt.axis("off")
 
 
 container.pyplot(fig)
