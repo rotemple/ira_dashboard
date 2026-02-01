@@ -20,9 +20,9 @@ st.title("📊 Political Communication Data Browser")
     # Display a preview of the data
 container = st.container()    
 container.write('Select an option from the sidebar to browse a corpus of political and/or social media communications')
-container.markdown("## Explore:
-            - IRA Election Interference Tweets',
-            - Trump Tweets")
+container.markdown("""## Explore:
+            - IRA Election Interference Tweets
+            - Trump Tweets""")
 
 
 container.write('Streamlit app created by Ryan Omizo')    
