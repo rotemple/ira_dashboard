@@ -85,4 +85,4 @@ container.dataframe(df)
 # plt.axis("off")
 
 
-container.pyplot(fig)
+#container.pyplot(fig)
