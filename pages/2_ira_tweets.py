@@ -65,6 +65,7 @@ def hashtag_extract(x):
 # Set the title of the Streamlit app
 st.title("📊 Data Dashboard to Browse fivethirtyeights' IRA Tweet Dataset")
 st.subheader('Fivethirtyeight/russian-troll-tweets. (2025). [Computer software]. FiveThirtyEight. https://github.com/fivethirtyeight/russian-troll-tweets (Original work published 2018)')
+st.write('See https://github.com/rotemple/russian-troll-tweets for the complete dataset description.')
 
 option = st.sidebar.selectbox(
     "Which file do you wish to browse?",
@@ -74,7 +75,6 @@ option = st.sidebar.selectbox(
      'IRAhandle_tweets_10.csv','IRAhandle_tweets_11.csv','IRAhandle_tweets_12.csv',
      'IRAhandle_tweets_13.csv',))
 
-st.sidebar.write('See https://github.com/rotemple/russian-troll-tweets for the complete dataset description.')
 # File uploader widget in the sidebar
 
 url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
