@@ -8,6 +8,8 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.tokenize import wordpunct_tokenize
+
+nltk.download('all')
 st.set_page_config(
   page_title="Biden Tweets (2007-2020)",
   )
