@@ -50,6 +50,8 @@ url = 'https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/
 df = pd.read_csv(url)
 
 container = st.container()
+container.markdown("""## Data Preview""")
+container.dataframe(df)
 
 
 
