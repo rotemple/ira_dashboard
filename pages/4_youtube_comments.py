@@ -49,28 +49,6 @@ st.sidebar.write('See https://doi.org/10.5334/johd.283 for the complete dataset 
 url = 'https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/pages/youtube_haitian_disinformation_comment_reply_metadata.csv'
 df = pd.read_csv(url)
 
-comments = df.comment.tolist()
-
-    
-    # Display a preview of the data
-container = st.container()    
-container.subheader("Data Preview")
-container.dataframe(df)
-
-cleaned = preprocess(str(comments)) 
-wordcloud = WordCloud().generate(cleaned)
-plt.axis("off")
-
-fig = plt.figure()
-plt.imshow(wordcloud, interpolation="bilinear")
-plt.axis("off")
-
-
-container.pyplot(fig)
-    
-    # Display basic statistics
-container.subheader("Descriptive Statistics")
-container.write(df.describe())
 
 
 
