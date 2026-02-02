@@ -50,7 +50,10 @@ url = 'https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/
 df = pd.read_csv(url)
 
 container = st.container()
-container.markdown("""## Data Preview""")
+container.markdown("""## Data Preview: YouTube Video Information""")
+vdf = pd.read_csv('https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/pages/youtube_haitian_disinformation_video_meta.csv')
+container.dataframe(vdf)
+container.markdown("""## Data Preview: YouTube Comments""")
 container.dataframe(df)
 
 
