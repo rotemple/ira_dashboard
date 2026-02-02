@@ -10,16 +10,17 @@ import pandas as pd
 import re
 import itertools
 from collections import Counter
+import nltk
+nltk.download('all')
 
 st.set_page_config(page_title='Political Communication Data Browser')
 
 # Set the title of the Streamlit app
 st.title("📊 Political Communication Data Browser")
-#st.subheader('Fivethirtyeight/russian-troll-tweets. (2025). [Computer software]. FiveThirtyEight. https://github.com/fivethirtyeight/russian-troll-tweets (Original work published 2018)')
 
     # Display a preview of the data
 container = st.container()    
-container.write('Select an option from the sidebar to browse a corpus of political and/or social media communications')
+container.write('Select an option from the sidebar to browse a corpus of political and/or social media communication')
 container.markdown("""
 ## Explore:
 - Trump Tweets
