@@ -57,9 +57,8 @@ container = st.container()
 container.subheader("Data Preview")
 container.dataframe(df)
 
-cleaned = [preprocess(comment) for comment in flatten_list(comments)]
-wordcloud = WordCloud().generate(' '.join(cleaned))
-
+cleaned = preprocess(str(comments)) 
+wordcloud = WordCloud().generate(cleaned)
 plt.axis("off")
 
 fig = plt.figure()
