@@ -39,29 +39,7 @@ def chunks(l, n):
     for i in range(0, len(l), n):
         yield l[i:i + n]
         
-def mention_extract(x):
-    mentions = []
-    # Loop over the words in the tweet
-    for i in x.split():
-        ht = re.findall(r"(@\w+)", i)
-        if ht == []:
-            pass
-        else:
-            mentions.append(ht)
 
-    return mentions
-
-def hashtag_extract(x):
-    hashtags = []
-    # Loop over the words in the tweet
-    for i in x.split():
-        ht = re.findall(r"(#\w+)", i)
-        if ht == []:
-            pass
-        else:
-            hashtags.append(ht)
-
-    return hashtags
 # Set the title of the Streamlit app
 st.title("📊 Data Dashboard to Browse YouTube Comemnts to the Trump/Vance Disinformation Campaign Against Haitian Communities in Springfield, OH")
 st.subheader('Omizo, R. M. (2025). Disinformation on Youtube: A Dataset of Youtube Comments on Videos Related to Claims Made by Trump and Vance on Haitian Immigrants. Journal of Open Humanities Data, 11, 12. https://doi.org/10.5334/johd.283
@@ -69,7 +47,7 @@ st.subheader('Omizo, R. M. (2025). Disinformation on Youtube: A Dataset of Youtu
 st.sidebar.write('See https://doi.org/10.5334/johd.283 for the complete dataset description.')
 # File uploader widget in the sidebar
 
-url = 'https://zenodo.org/records/14166028/files/youtube_haitian_disinformation_comment_reply_metadata.csv?download=1'
+url = 'https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/pages/youtube_haitian_disinformation_comment_reply_metadata.csv'
 df = pd.read_csv(url)
 
 comments = df.comment.tolist()
