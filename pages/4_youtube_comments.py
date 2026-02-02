@@ -54,7 +54,7 @@ comments = df.comment.tolist()
     
     # Display a preview of the data
 container = st.container()    
-container.subheader("Data Preview:"
+container.subheader("Data Preview")
 container.dataframe(df)
 
 cleaned = [preprocess(comment) for comment in comments]
