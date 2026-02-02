@@ -70,7 +70,7 @@ plt.axis("off")
 container.pyplot(fig)
     
     # Display basic statistics
-container.subheader("Descriptive Statistics')
+container.subheader("Descriptive Statistics")
 container.write(df.describe())
 
 
