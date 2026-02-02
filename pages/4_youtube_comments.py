@@ -42,8 +42,7 @@ def chunks(l, n):
 
 # Set the title of the Streamlit app
 st.title("📊 Data Dashboard to Browse YouTube Comemnts to the Trump/Vance Disinformation Campaign Against Haitian Communities in Springfield, OH")
-st.subheader('Omizo, R. M. (2025). Disinformation on Youtube: A Dataset of Youtube Comments on Videos Related to Claims Made by Trump and Vance on Haitian Immigrants. Journal of Open Humanities Data, 11, 12. https://doi.org/10.5334/johd.283
-')
+st.subheader('Omizo, R. M. (2025). Disinformation on Youtube: A Dataset of Youtube Comments on Videos Related to Claims Made by Trump and Vance on Haitian Immigrants. Journal of Open Humanities Data, 11, 12. https://doi.org/10.5334/johd.283')
 st.sidebar.write('See https://doi.org/10.5334/johd.283 for the complete dataset description.')
 # File uploader widget in the sidebar
 
