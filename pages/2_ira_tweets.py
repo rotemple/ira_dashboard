@@ -103,10 +103,10 @@ if troll_select == "None" and category_select == 'None':
     hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
   except:
     st.subheader("hashtag extraction error!")
-  st.subheader('Top-50 Hashtags for  '+option)
+  st.subheader('Top-50 Hashtags for '+option)
   st.dataframe(hcounts) 
   #get metions
-  st.subheader('Top-50 Mentions for  '+option)
+  st.subheader('Top-50 Mentions for '+option)
   try:
     mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
     counts = pd.DataFrame(Counter(mentions).most_common()[:50])
@@ -129,10 +129,10 @@ elif troll_select == 'None':
     hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
   except:
     st.subheader("hashtag extraction error!")
-  st.subheader('Top-50 Hashtags for  '+option)
+  st.subheader('Top-50 Hashtags for ' + category_select + ' '+option)
   st.dataframe(hcounts) 
   #get metions
-  st.subheader('Top-50 Mentions for  '+option)
+  st.subheader('Top-50 Mentions for ' + category_select + ' '+option)
   try:
     mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
     counts = pd.DataFrame(Counter(mentions).most_common()[:50])
@@ -154,10 +154,10 @@ elif category_select == 'None':
     hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
   except:
     st.subheader("hashtag extraction error!")
-  st.subheader('Top-50 Hashtags for  '+option)
+  st.subheader('Top-50 Hashtags for ' + troll_select + ' ' +option)
   st.dataframe(hcounts) 
   #get metions
-  st.subheader('Top-50 Mentions for  '+option)
+  st.subheader('Top-50 Mentions for ' +troll_select + ' '+option)
   try:
     mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
     counts = pd.DataFrame(Counter(mentions).most_common()[:50])
@@ -184,7 +184,7 @@ else:
   st.subheader('Top-50 Hashtags for ' + troll_select + ' & ' + category_select + ' ' +option)
   st.dataframe(hcounts) 
   #get metions
-  st.subheader('Top-50 Mentions for  '+option)
+  st.subheader('Top-50 Hashtags for ' + troll_select + ' & ' + category_select + ' ' +option)
   try:
     mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
     counts = pd.DataFrame(Counter(mentions).most_common()[:50])
