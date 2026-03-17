@@ -80,19 +80,18 @@ option = st.sidebar.selectbox(
   
 url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
 df = pd.read_csv(url+option)
+tweets = df.content.tolist()
 
 try:
-    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in df.content.tolist()]))
+    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
     hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
     hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
     
-    st.dataframe(hcounts) 
 except:
     st.subheader("hashtag extraction error!")
 
 df['col1'] = list(range(len(df)))
 df['hashtags'] = hashtags
-tweets = df.content.tolist()
 
     
     # Display a preview of the data
@@ -110,6 +109,7 @@ container.subheader("Descriptive Statistics: " + option)
 container.write(df.describe())
 
 st.subheader('Top-50 Hashtags for  '+option)
+st.dataframe(hcounts) 
 
 
 #display top-50 mentions
