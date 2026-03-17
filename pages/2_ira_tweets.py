@@ -76,17 +76,19 @@ option = st.sidebar.selectbox(
      'IRAhandle_tweets_13.csv',))
 
 # File uploader widget in the sidebar
+
+  
+url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
+df = pd.read_csv(url+option)
+
 try:
-    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
+    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in df.content.tolist()]))
     hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
     hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
     
     st.dataframe(hcounts) 
 except:
     st.subheader("hashtag extraction error!")
-  
-url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
-df = pd.read_csv(url+option)
 
 df['col1'] = list(range(len(df)))
 df['hashtags'] = hashtags
