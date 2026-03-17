@@ -91,7 +91,6 @@ except:
     st.subheader("hashtag extraction error!")
 
 df['col1'] = list(range(len(df)))
-df['hashtags'] = hashtags
 
     
     # Display a preview of the data
