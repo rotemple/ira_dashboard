@@ -115,6 +115,7 @@ if troll_select == "None" and category_select == 'None':
     st.dataframe(counts)    
   except:
     st.subheader('mention extraction error!')
+  st.download_button('Download CSV', df.to_csv(option+'.csv', 'text/csv')
     
 elif troll_select == 'None':
   df = df[df['account_category'] == category_select]
@@ -141,6 +142,8 @@ elif troll_select == 'None':
     st.dataframe(counts)    
   except:
     st.subheader('mention extraction error!')
+  st.download_button('Download CSV', df.to_csv(option+'.csv', 'text/csv')
+
 elif category_select == 'None':
   df = df[df['account_type'] == troll_select]
   container.dataframe(df)
@@ -166,6 +169,8 @@ elif category_select == 'None':
     st.dataframe(counts)    
   except:
     st.subheader('mention extraction error!')
+  st.download_button('Download CSV', df.to_csv(option+'.csv', 'text/csv')
+
 else:
   d = df[df['account_type'] == troll_select]
   container.dataframe(d[d['account_category'] == category_select])
@@ -193,6 +198,8 @@ else:
     st.dataframe(counts)    
   except:
     st.subheader('mention extraction error!')
+  st.download_button('Download CSV', d.to_csv(option+'.csv'), 'text/csv')
+
 
 
     
