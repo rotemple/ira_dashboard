@@ -181,7 +181,7 @@ else:
   except:
     st.subheader("hashtag extraction error!")
     
-  st.subheader('Top-50 Hashtags for  '+ troll_select + ' & '+ category_select + ' ' +option)
+  st.subheader('Top-50 Hashtags for ' + troll_select + ' & ' + category_select + ' ' +option)
   st.dataframe(hcounts) 
   #get metions
   st.subheader('Top-50 Mentions for  '+option)
