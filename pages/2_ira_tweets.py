@@ -88,9 +88,6 @@ tweets = df.content.tolist()
 container = st.container()    
 container.subheader("Data Preview: " + option)
 container.dataframe(df)
-container.subheader("Data Preview: " + option)
-
-container.pyplot(fig)
     
     # Display basic statistics
 container.subheader("Descriptive Statistics: " + option)
