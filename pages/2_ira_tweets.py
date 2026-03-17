@@ -96,7 +96,7 @@ df['col1'] = list(range(len(df)))
     # Display a preview of the data
 container = st.container()    
 container.subheader("Data Preview: " + option)
-troll_select = container.selectbox('Filter by Troll Type:','None'+ df.account_type.unique().tolist())
+troll_select = container.selectbox('Filter by Troll Type:',['None'] + df.account_type.unique().tolist())
 
 if troll_select == "None":
   container.dataframe(df)
