@@ -61,6 +61,11 @@ def hashtag_extract(x):
             hashtags.append(ht)
 
     return hashtags
+
+@st.cache_data
+def convert_df(df):
+   return df.to_csv(index=False).encode('utf-8')
+  
 # Set the title of the Streamlit app
 st.title("📊 Data Dashboard to Browse fivethirtyeights' IRA Tweet Dataset")
 st.subheader('Fivethirtyeight/russian-troll-tweets. (2025). [Computer software]. FiveThirtyEight. https://github.com/fivethirtyeight/russian-troll-tweets (Original work published 2018)')
@@ -115,7 +120,15 @@ if troll_select == "None" and category_select == 'None':
     st.dataframe(counts)    
   except:
     st.subheader('mention extraction error!')
-  st.download_button('Download CSV', df.to_csv(option+'.csv'), 'text/csv')
+
+  csv = convert_df(df)
+  st.download_button(
+   "Press to Download",
+   csv,
+   "file.csv",
+   "text/csv",
+   key='download-csv'
+)
     
 elif troll_select == 'None':
   df = df[df['account_category'] == category_select]
@@ -142,7 +155,14 @@ elif troll_select == 'None':
     st.dataframe(counts)    
   except:
     st.subheader('mention extraction error!')
-  st.download_button('Download CSV', df.to_csv(option+'.csv'), 'text/csv')
+  csv = convert_df(df)
+  st.download_button(
+   "Press to Download",
+   csv,
+   "file.csv",
+   "text/csv",
+   key='download-csv'
+)
 
 elif category_select == 'None':
   df = df[df['account_type'] == troll_select]
@@ -169,7 +189,14 @@ elif category_select == 'None':
     st.dataframe(counts)    
   except:
     st.subheader('mention extraction error!')
-  st.download_button('Download CSV', df.to_csv(option+'.csv'), 'text/csv')
+  csv = convert_df(df)
+  st.download_button(
+   "Press to Download",
+   csv,
+   "file.csv",
+   "text/csv",
+   key='download-csv'
+)
 
 else:
   d = df[df['account_type'] == troll_select]
@@ -198,11 +225,15 @@ else:
     st.dataframe(counts)    
   except:
     st.subheader('mention extraction error!')
-  st.download_button('Download CSV', d.to_csv(option+'.csv'), 'text/csv')
-
-
-
-    
+  csv = convert_df(d)
+  st.download_button(
+   "Press to Download",
+   csv,
+   "file.csv",
+   "text/csv",
+   key='download-csv'
+)
+ 
     # Display basic statistics
 # container.subheader("Descriptive Statistics: " + option)
 # container.write(df.describe())
