@@ -10,7 +10,6 @@ import pandas as pd
 import re
 import itertools
 from collections import Counter
-from wordcloud import WordCloud
 import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
@@ -57,7 +56,7 @@ def hashtag_extract(x):
     for i in x.split():
         ht = re.findall(r"(#\w+)", i)
         if ht == []:
-            hashtags.append(None)
+            pass
         else:
             hashtags.append(ht)
 
@@ -101,7 +100,7 @@ troll_select = container.selectbox('Filter by Troll Type:',['None'] + df.account
 if troll_select == "None":
   container.dataframe(df)
 else:
-  container.dataframe(df[df['account_type']] == troll_select)
+  container.dataframe(df[df['account_type'] == troll_select])
     
     # Display basic statistics
 container.subheader("Descriptive Statistics: " + option)
