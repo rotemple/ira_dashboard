@@ -57,7 +57,7 @@ def hashtag_extract(x):
     for i in x.split():
         ht = re.findall(r"(#\w+)", i)
         if ht == []:
-            pass
+            hashtags.append(None)
         else:
             hashtags.append(ht)
 
@@ -76,24 +76,6 @@ option = st.sidebar.selectbox(
      'IRAhandle_tweets_13.csv',))
 
 # File uploader widget in the sidebar
-
-url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
-df = pd.read_csv(url+option)
-
-df['col1'] = list(range(len(df)))
-tweets = df.content.tolist()
-
-    
-    # Display a preview of the data
-container = st.container()    
-container.subheader("Data Preview: " + option)
-container.dataframe(df)
-    
-    # Display basic statistics
-container.subheader("Descriptive Statistics: " + option)
-container.write(df.describe())
-
-st.subheader('Top-50 Hashtags for  '+option)
 try:
     hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
     hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
@@ -102,6 +84,31 @@ try:
     st.dataframe(hcounts) 
 except:
     st.subheader("hashtag extraction error!")
+  
+url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
+df = pd.read_csv(url+option)
+
+df['col1'] = list(range(len(df)))
+df['hashtags'] = hashtags
+tweets = df.content.tolist()
+
+    
+    # Display a preview of the data
+container = st.container()    
+container.subheader("Data Preview: " + option)
+troll_select = container.st.selectbox('Filter by Troll Type:','None'+ df.account_type.unique().tolist())
+
+if troll_select == "None":
+  container.dataframe(df)
+else:
+  container.dataframe(df[df['account_type'] == troll_select)
+    
+    # Display basic statistics
+container.subheader("Descriptive Statistics: " + option)
+container.write(df.describe())
+
+st.subheader('Top-50 Hashtags for  '+option)
+
 
 #display top-50 mentions
 st.subheader('Top-50 Mentions for  '+option)
