@@ -79,15 +79,7 @@ option = st.sidebar.selectbox(
   
 url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
 df = pd.read_csv(url+option)
-tweets = df.content.tolist()
 
-try:
-    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
-    hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
-    hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
-    
-except:
-    st.subheader("hashtag extraction error!")
 
 df['col1'] = list(range(len(df)))
 
@@ -102,21 +94,106 @@ if troll_select == "None" and category_select == 'None':
   container.dataframe(df)
   container.subheader("Descriptive Statistics: " + option)
   container.write(df.describe())
+
+#get hashtags
+  tweets = df.content.tolist()
+  try:
+    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
+    hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
+    hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
+  except:
+    st.subheader("hashtag extraction error!")
+  st.subheader('Top-50 Hashtags for  '+option)
+  st.dataframe(hcounts) 
+  #get metions
+  st.subheader('Top-50 Mentions for  '+option)
+  try:
+    mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
+    counts = pd.DataFrame(Counter(mentions).most_common()[:50])
+    counts = counts.rename(columns={0:'mention',1:'count'})
+    
+    st.dataframe(counts)    
+  except:
+    st.subheader('mention extraction error!')
+    
 elif troll_select == 'None':
   df = df[df['account_category'] == category_select]
   container.dataframe(df)
   container.subheader("Descriptive Statistics: " + option)
   container.write(df.describe())
+  #get hashtags
+  tweets = df.content.tolist()
+  try:
+    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
+    hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
+    hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
+  except:
+    st.subheader("hashtag extraction error!")
+  st.subheader('Top-50 Hashtags for  '+option)
+  st.dataframe(hcounts) 
+  #get metions
+  st.subheader('Top-50 Mentions for  '+option)
+  try:
+    mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
+    counts = pd.DataFrame(Counter(mentions).most_common()[:50])
+    counts = counts.rename(columns={0:'mention',1:'count'})
+    
+    st.dataframe(counts)    
+  except:
+    st.subheader('mention extraction error!')
 elif category_select == 'None':
   df = df[df['account_type'] == troll_select]
   container.dataframe(df)
   container.subheader("Descriptive Statistics: " + option)
   container.write(df.describe())
+  #get hashtags
+  tweets = df.content.tolist()
+  try:
+    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
+    hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
+    hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
+  except:
+    st.subheader("hashtag extraction error!")
+  st.subheader('Top-50 Hashtags for  '+option)
+  st.dataframe(hcounts) 
+  #get metions
+  st.subheader('Top-50 Mentions for  '+option)
+  try:
+    mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
+    counts = pd.DataFrame(Counter(mentions).most_common()[:50])
+    counts = counts.rename(columns={0:'mention',1:'count'})
+    
+    st.dataframe(counts)    
+  except:
+    st.subheader('mention extraction error!')
 else:
   d = df[df['account_type'] == troll_select]
   container.dataframe(d[d['account_category'] == category_select])
   container.subheader("Descriptive Statistics: " + option)
   container.write(d.describe())
+
+  #get hashtags
+  tweets = d.content.tolist()
+  try:
+    hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
+    hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
+    hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
+  except:
+    st.subheader("hashtag extraction error!")
+  st.subheader('Top-50 Hashtags for  '+option)
+  st.dataframe(hcounts) 
+  #get metions
+  st.subheader('Top-50 Mentions for  '+option)
+  try:
+    mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
+    counts = pd.DataFrame(Counter(mentions).most_common()[:50])
+    counts = counts.rename(columns={0:'mention',1:'count'})
+    
+    st.dataframe(counts)    
+  except:
+    st.subheader('mention extraction error!')
+
+
     
     # Display basic statistics
 # container.subheader("Descriptive Statistics: " + option)
@@ -127,16 +204,16 @@ st.dataframe(hcounts)
 
 
 #display top-50 mentions
-st.subheader('Top-50 Mentions for  '+option)
+# st.subheader('Top-50 Mentions for  '+option)
 
-try:
-    mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
-    counts = pd.DataFrame(Counter(mentions).most_common()[:50])
-    counts = counts.rename(columns={0:'mention',1:'count'})
+# try:
+#     mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
+#     counts = pd.DataFrame(Counter(mentions).most_common()[:50])
+#     counts = counts.rename(columns={0:'mention',1:'count'})
     
-    st.dataframe(counts)    
-except:
-    st.subheader('mention extraction error!')
+#     st.dataframe(counts)    
+# except:
+#     st.subheader('mention extraction error!')
 
 
 container.write('Streamlit app created by Ryan Omizo')    
