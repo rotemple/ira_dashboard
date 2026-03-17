@@ -100,17 +100,27 @@ category_select = container.selectbox('Filter by Troll Category:',['None'] + df.
 
 if troll_select == "None" and category_select == 'None':
   container.dataframe(df)
+  container.subheader("Descriptive Statistics: " + option)
+  container.write(df.describe())
 elif troll_select == 'None':
-  container.dataframe(df[df['account_category'] == category_select])
+  df = df[df['account_category'] == category_select]
+  container.dataframe(df)
+  container.subheader("Descriptive Statistics: " + option)
+  container.write(df.describe())
 elif category_select == 'None':
-  container.dataframe(df[df['account_type'] == troll_select])
+  df = df[df['account_type'] == troll_select]
+  container.dataframe(df)
+  container.subheader("Descriptive Statistics: " + option)
+  container.write(df.describe())
 else:
   d = df[df['account_type'] == troll_select]
   container.dataframe(d[d['account_category'] == category_select])
+  container.subheader("Descriptive Statistics: " + option)
+  container.write(d.describe())
     
     # Display basic statistics
-container.subheader("Descriptive Statistics: " + option)
-container.write(df.describe())
+# container.subheader("Descriptive Statistics: " + option)
+# container.write(df.describe())
 
 st.subheader('Top-50 Hashtags for  '+option)
 st.dataframe(hcounts) 
