@@ -101,7 +101,7 @@ troll_select = container.st.selectbox('Filter by Troll Type:','None'+ df.account
 if troll_select == "None":
   container.dataframe(df)
 else:
-  container.dataframe(df[df['account_type'] == troll_select)
+  container.dataframe(df[df['account_type']] == troll_select)
     
     # Display basic statistics
 container.subheader("Descriptive Statistics: " + option)
