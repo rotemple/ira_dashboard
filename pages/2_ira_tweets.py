@@ -96,11 +96,17 @@ df['col1'] = list(range(len(df)))
 container = st.container()    
 container.subheader("Data Preview: " + option)
 troll_select = container.selectbox('Filter by Troll Type:',['None'] + df.account_type.unique().tolist())
+category_select = container.selectbox('Filter by Troll Category:',['None'] + df.account_category.unique().tolist())
 
-if troll_select == "None":
+if troll_select == "None" and category_select == 'None':
   container.dataframe(df)
-else:
+elif troll_select == 'None':
+  container.dataframe(df[df['account_category'] == category_select])
+elif category_select == 'None':
   container.dataframe(df[df['account_type'] == troll_select])
+else:
+  d = df[df['account_type'] == troll_select]
+  container.dataframe(d[d['account_category'] == category_select])
     
     # Display basic statistics
 container.subheader("Descriptive Statistics: " + option)
