@@ -255,7 +255,7 @@ def make_corpus(content):
   
 corpus = make_corpus(df_content)
 
-corpus_concordance = corpus.concordance_list(query.lower(),width=150,lines=len(df_cotent))
+corpus_concordance = corpus.concordance_list(query.lower(),width=150,lines=len(df_content))
 cf = pd.DataFrame({'text':[c.line for c in corpus_concordance]})
 st.subheader('Concordance Search Results')
 st.dataframe(cf)
