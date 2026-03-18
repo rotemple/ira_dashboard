@@ -241,7 +241,10 @@ else:
 query = st.sidebar.text_input(label='Search the corpus for keywords')
 
 @st.cache_data
-corpus = Text(str(df_content))
+def make_corpus(content):
+  return Text(str(content))
+  
+corpus = make_corpus(df_conent)
 
 st.write(corpus.concordance_list(query)[0:-1])
 
