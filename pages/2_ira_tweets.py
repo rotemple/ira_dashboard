@@ -240,7 +240,7 @@ else:
 
 query = st.sidebar.text_input(label='Search the corpus for keywords')
 corpus = Text(df_content)
-st.dataframe(corpus.concordance_list(query))
+st.write(corpus.concordance(query))
 
     # Display basic statistics
 # container.subheader("Descriptive Statistics: " + option)
