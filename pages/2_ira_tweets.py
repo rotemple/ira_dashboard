@@ -17,7 +17,7 @@ from nltk.tokenize import wordpunct_tokenize
 from nltk.corpus import gutenberg
 from nltk.text import Text
 
-@st.cach_data
+@st.cache_data
 def nltk_download():
   nltk.download('all')
 
