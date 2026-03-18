@@ -84,7 +84,12 @@ option = st.sidebar.selectbox(
 
   
 url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
-df = pd.read_csv(url+option)
+
+@st.cache_data
+def load_csv(url):
+  return pd.read_csv(url)
+  
+df = load_csv(url+option)
 df_content = df.content.tolist()
 
 
@@ -244,7 +249,7 @@ query = st.sidebar.text_input(label='Search the corpus for keywords')
 def make_corpus(content):
   return Text(str(content))
   
-corpus = make_corpus(df_conent)
+corpus = make_corpus(df_content)
 
 st.write(corpus.concordance_list(query)[0:-1])
 
