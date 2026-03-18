@@ -257,8 +257,8 @@ corpus = make_corpus(df_content)
 
 corpus_concordance = corpus.concordance_list(query.lower())[0:-1]
 cf = pd.DataFrame({'text':[c.line for c in corpus_concordance]})
-container.subheader('Concordance Search Results')
-container.dataframe(cf)
+st.subheader('Concordance Search Results')
+st.dataframe(cf)
 
     # Display basic statistics
 # container.subheader("Descriptive Statistics: " + option)
