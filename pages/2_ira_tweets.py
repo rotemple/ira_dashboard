@@ -255,7 +255,7 @@ def make_corpus(content):
   
 corpus = make_corpus(df_content)
 
-corpus_concordance = corpus.concordance_list(query.lower())[0:-1])
+corpus_concordance = corpus.concordance_list(query.lower())[0:-1]
 for i in range(len(corpus_concordance)):
   st.write(corpus_concordance[i].line)
 
