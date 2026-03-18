@@ -239,8 +239,11 @@ else:
 # Concordancer
 
 query = st.sidebar.text_input(label='Search the corpus for keywords')
+
+@st.cache_data
 corpus = Text(str(df_content))
-st.write(corpus.concordance(query))
+
+st.write(corpus.concordance_list(query)[0:-1])
 
     # Display basic statistics
 # container.subheader("Descriptive Statistics: " + option)
