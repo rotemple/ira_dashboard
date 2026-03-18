@@ -14,7 +14,8 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.tokenize import wordpunct_tokenize
-
+from nltk.corpus import gutenberg
+from nltk.text import Text
 nltk.download('all')
 
   
@@ -84,6 +85,7 @@ option = st.sidebar.selectbox(
   
 url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
 df = pd.read_csv(url+option)
+df_content = df.content.tolist()
 
 
 df['col1'] = list(range(len(df)))
@@ -233,7 +235,13 @@ else:
    "text/csv",
    key='download-csv'
 )
- 
+
+# Concordancer
+
+query = container.text_input()
+corpus = Text(df_content)
+st.write(corpus.concordance(query)
+
     # Display basic statistics
 # container.subheader("Descriptive Statistics: " + option)
 # container.write(df.describe())
