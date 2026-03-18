@@ -85,7 +85,7 @@ option = st.sidebar.selectbox(
   
 url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/heads/master/'
 df = pd.read_csv(url+option)
-df_content = str(df.content.tolist())
+df_content = df.content.tolist()
 
 
 df['col1'] = list(range(len(df)))
@@ -239,7 +239,7 @@ else:
 # Concordancer
 
 query = st.sidebar.text_input(label='Search the corpus for keywords')
-corpus = Text(df_content)
+corpus = Text(str(df_content))
 st.write(corpus.concordance(query))
 
     # Display basic statistics
