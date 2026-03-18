@@ -240,7 +240,7 @@ else:
 
 query = container.text_input()
 corpus = Text(df_content)
-st.write(corpus.concordance(query)
+st.write(corpus.concordance(query))
 
     # Display basic statistics
 # container.subheader("Descriptive Statistics: " + option)
