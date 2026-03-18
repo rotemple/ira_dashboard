@@ -16,9 +16,13 @@ from nltk.corpus import stopwords
 from nltk.tokenize import wordpunct_tokenize
 from nltk.corpus import gutenberg
 from nltk.text import Text
-nltk.download('all')
 
-  
+@st.cach_data
+def nltk_download():
+  nltk.download('all')
+
+nltk_download()
+
 stops = set(stopwords.words('english'))
 wn = WordNetLemmatizer()
 def preprocess(text):
@@ -247,7 +251,7 @@ query = st.sidebar.text_input(label='Search the corpus for keywords')
 
 @st.cache_data
 def make_corpus(content):
-  return Text(str(content))
+  return Text(nltk.word_tokenize(str(content).lower()))
   
 corpus = make_corpus(df_content)
 
