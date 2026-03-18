@@ -238,7 +238,7 @@ else:
 
 # Concordancer
 
-query = container.text_input(label='Search the corpus for keywords')
+query = sidebar.st.text_input(label='Search the corpus for keywords')
 corpus = Text(df_content)
 st.dataframe(corpus.concordance_list(query))
 
