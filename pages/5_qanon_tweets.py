@@ -116,10 +116,12 @@ try:
   hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
 except:
   st.subheader("hashtag extraction error!")
+
 st.subheader('Top-50 Hashtags for '+option)
 st.dataframe(hcounts) 
   #get metions
 st.subheader('Top-50 Mentions for '+option)
+
 try:
   mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
   counts = pd.DataFrame(Counter(mentions).most_common()[:50])
@@ -130,7 +132,7 @@ except:
   st.subheader('mention extraction error!')
 
 csv = convert_df(df)
-  st.download_button(
+st.download_button(
    "Press to Download",
    csv,
    "file.csv",
