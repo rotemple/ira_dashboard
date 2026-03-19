@@ -81,7 +81,7 @@ def convert_df(df):
    return df.to_csv(index=False).encode('utf-8')
   
 # Set the title of the Streamlit app
-st.title("📊 Data Dashboard to Browse Hannah (2022) QAnon Tweet Dataset
+st.title("📊 Data Dashboard to Browse Hannah's (2022) QAnon Tweet Dataset")
 st.subheader('Hannah, M. N. (2022). Collection of tweets related to QAnon hashtags. Purdue University Research Repository. doi:10.4231/32MD-DB04')
 st.write('For the dataset description, see https://purr.purdue.edu/publications/4171/about/1#citethis')
 
