@@ -30,9 +30,9 @@ def get_stops():
 def get_lemmatizer():
   return WordNetLemmatizer()
 
+nltk_download()
 stops = get_stops()
 wn = get_lemmatizer()
-nltk_download()
 
 def preprocess(text):
   tokens = nltk.wordpunct_tokenize(text) #tokenize text
