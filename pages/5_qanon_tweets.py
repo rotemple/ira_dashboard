@@ -101,21 +101,22 @@ filenames = ['qanon_tweets_0.csv',
              'qanon_tweets_8.csv',
              'qanon_tweets_9.csv',
              'qanon_tweets_10.csv',
-             'qanon_tweets_11.csv',
-             'qanon_tweets_12.csv',
-             'qanon_tweets_13.csv',
-             'qanon_tweets_14.csv',
-             'qanon_tweets_15.csv',
-             'qanon_tweets_16.csv',
-             'qanon_tweets_17.csv',
-             'qanon_tweets_18.csv',
-             'qanon_tweets_19.csv',
-             'qanon_tweets_20.csv',
-             'qanon_tweets_21.csv',
-             'qanon_tweets_22.csv',
-             'qanon_tweets_23.csv',
-             'qanon_tweets_24.csv',
-            'qanon_tweets_25.csv',]
+            #  'qanon_tweets_11.csv',
+            #  'qanon_tweets_12.csv',
+            #  'qanon_tweets_13.csv',
+            #  'qanon_tweets_14.csv',
+            #  'qanon_tweets_15.csv',
+            #  'qanon_tweets_16.csv',
+            #  'qanon_tweets_17.csv',
+            #  'qanon_tweets_18.csv',
+            #  'qanon_tweets_19.csv',
+            #  'qanon_tweets_20.csv',
+            #  'qanon_tweets_21.csv',
+            #  'qanon_tweets_22.csv',
+            #  'qanon_tweets_23.csv',
+            #  'qanon_tweets_24.csv',
+            # 'qanon_tweets_25.csv',
+            ]
 @st.cache_data
 def load_csv(url):
   return pd.read_csv(url)
@@ -128,6 +129,7 @@ df['col1'] = list(range(len(df)))
     # Display a preview of the data
 container = st.container()    
 container.subheader("Data Preview")
+container.dataframe(df)
 
 #get hashtags
 tweets = df.dropna(subset='text').text.tolist()
