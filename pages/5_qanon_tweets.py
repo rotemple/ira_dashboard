@@ -177,7 +177,7 @@ def make_corpus(content):
   return Text(nltk.word_tokenize(str(content).lower()))
   
 corpus = make_corpus(tweets)
-corpus_concordance = corpus.concordance_list(query.lower(),width=150,lines=len(df_content))
+corpus_concordance = corpus.concordance_list(query.lower(),width=150,lines=len(tweets))
 cf = pd.DataFrame({'text':[c.line for c in corpus_concordance]})
 st.subheader('Concordance Search Results')
 st.dataframe(cf)
