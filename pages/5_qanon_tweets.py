@@ -88,14 +88,38 @@ st.write('For the dataset description, see https://purr.purdue.edu/publications/
 
 # File uploader widget in the sidebar
 
-  
-url = 'https://tuprd-my.sharepoint.com/:x:/g/personal/tuk35906_temple_edu/IQB2aHQlR5buTop0yJTmQ9k7AQDgcjRm9XNcD0cRvb40wZU?e=0VQymS'
-
+filenames = ['qanon_tweets_0.csv',
+             'qanon_tweets_1.csv',
+             'qanon_tweets_2.csv',
+             'qanon_tweets_3.csv',
+             'qanon_tweets_4.csv',
+             'qanon_tweets_5.csv',
+             'qanon_tweets_6.csv',
+             'qanon_tweets_7.csv',
+             'qanon_tweets_8.csv',
+             'qanon_tweets_9.csv',
+             'qanon_tweets_10.csv',
+             'qanon_tweets_11.csv',
+             'qanon_tweets_12.csv',
+             'qanon_tweets_13.csv',
+             'qanon_tweets_14.csv',
+             'qanon_tweets_15.csv',
+             'qanon_tweets_16.csv',
+             'qanon_tweets_17.csv',
+             'qanon_tweets_18.csv',
+             'qanon_tweets_19.csv',
+             'qanon_tweets_20.csv',
+             'qanon_tweets_21.csv',
+             'qanon_tweets_22.csv',
+             'qanon_tweets_23.csv',
+             'qanon_tweets_24.csv',
+            'qanon_tweets_25.csv',]
 @st.cache_data
 def load_csv(url):
   return pd.read_csv(url)
   
-df = load_csv(url)
+dfs = [load_csv(f) for f in filenames]
+df = pd.concat(dfs)
 df['col1'] = list(range(len(df)))
 
     
