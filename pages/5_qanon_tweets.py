@@ -130,14 +130,14 @@ container = st.container()
 container.subheader("Data Preview")
 
 #get hashtags
-tweets = df.text.tolist()
+tweets = df.dropna(subset='text').text.tolist()
 
  # Display basic statistics
 container.subheader("Descriptive Statistics")
 container.write(df.describe())
 
 try:
-  hashtags = flatten_list([hashtag_extract(tweet) for tweet in tweets])
+  hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
   hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
   hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
   st.subheader('Top-50 Hashtags')
