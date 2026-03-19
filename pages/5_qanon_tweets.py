@@ -81,6 +81,7 @@ def convert_df(df):
    return df.to_csv(index=False).encode('utf-8')
 
 st.set_page_config(page_title='Hannah (2022) QAnon Tweet Dataset')
+
 # Set the title of the Streamlit app
 st.title("📊 Data Dashboard to Browse Hannah's (2022) QAnon Tweet Dataset")
 st.subheader('Hannah, M. N. (2022). Collection of tweets related to QAnon hashtags. Purdue University Research Repository. doi:10.4231/32MD-DB04')
@@ -142,10 +143,10 @@ try:
 except:
   st.subheader("hashtag extraction error!")
 
-st.subheader('Top-50 Hashtags for '+option)
+st.subheader('Top-50 Hashtags')
 st.dataframe(hcounts) 
   #get metions
-st.subheader('Top-50 Mentions for '+option)
+st.subheader('Top-50 Mentions')
 
 try:
   mentions =flatten_list(flatten_list([mention_extract(tweet) for tweet in tweets]))
