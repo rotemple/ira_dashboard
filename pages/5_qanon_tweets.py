@@ -79,7 +79,8 @@ def hashtag_extract(x):
 @st.cache_data
 def convert_df(df):
    return df.to_csv(index=False).encode('utf-8')
-  
+
+st.set_page_config(page_title='Hannah (2022) QAnon Tweet Dataset')
 # Set the title of the Streamlit app
 st.title("📊 Data Dashboard to Browse Hannah's (2022) QAnon Tweet Dataset")
 st.subheader('Hannah, M. N. (2022). Collection of tweets related to QAnon hashtags. Purdue University Research Repository. doi:10.4231/32MD-DB04')
@@ -87,7 +88,7 @@ st.write('For the dataset description, see https://purr.purdue.edu/publications/
 
 
 # File uploader widget in the sidebar
-
+base_url = 'https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/pages/'
 filenames = ['qanon_tweets_0.csv',
              'qanon_tweets_1.csv',
              'qanon_tweets_2.csv',
@@ -118,7 +119,7 @@ filenames = ['qanon_tweets_0.csv',
 def load_csv(url):
   return pd.read_csv(url)
   
-dfs = [load_csv(f) for f in filenames]
+dfs = [load_csv(base_url+f) for f in filenames]
 df = pd.concat(dfs)
 df['col1'] = list(range(len(df)))
 
