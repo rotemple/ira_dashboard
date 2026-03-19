@@ -51,7 +51,7 @@ def chunks(l, n):
     """Yield successive n-sized chunks from l."""
     for i in range(0, len(l), n):
         yield l[i:i + n]
-        
+@st.cache_data     
 def mention_extract(x):
     mentions = []
     # Loop over the words in the tweet
@@ -63,7 +63,7 @@ def mention_extract(x):
             mentions.append(ht)
 
     return mentions
-
+@st.cache_data
 def hashtag_extract(x):
     hashtags = []
     # Loop over the words in the tweet
