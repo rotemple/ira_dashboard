@@ -140,11 +140,11 @@ try:
   hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
   hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
   hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
+  st.subheader('Top-50 Hashtags')
+  st.dataframe(hcounts) 
 except:
   st.subheader("hashtag extraction error!")
-
-st.subheader('Top-50 Hashtags')
-st.dataframe(hcounts) 
+  
   #get metions
 st.subheader('Top-50 Mentions')
 
