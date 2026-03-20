@@ -123,10 +123,11 @@ if troll_select == "None" and category_select == 'None':
     hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
     hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
     hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
+    st.subheader('Top-50 Hashtags for '+option)
+    st.dataframe(hcounts) 
   except:
     st.subheader("hashtag extraction error!")
-  st.subheader('Top-50 Hashtags for '+option)
-  st.dataframe(hcounts) 
+  
   #get metions
   st.subheader('Top-50 Mentions for '+option)
   try:
@@ -158,10 +159,11 @@ elif troll_select == 'None':
     hashtags = flatten_list(flatten_list([hashtag_extract(tweet) for tweet in tweets]))
     hcounts = pd.DataFrame(Counter(hashtags).most_common()[:50])
     hcounts = hcounts.rename(columns={0:'hashtag',1:'count'})
+    st.subheader('Top-50 Hashtags for ' + category_select + ' '+option)
+    st.dataframe(hcounts) 
   except:
     st.subheader("hashtag extraction error!")
-  st.subheader('Top-50 Hashtags for ' + category_select + ' '+option)
-  st.dataframe(hcounts) 
+  
   #get metions
   st.subheader('Top-50 Mentions for ' + category_select + ' '+option)
   try:
