@@ -103,7 +103,7 @@ df = load_csv(url+option)
 df_content = df.content.tolist()
 
 
-df['col1'] = list(range(len(df)))
+#df['col1'] = list(range(len(df)))
 
     
     # Display a preview of the data
@@ -111,8 +111,17 @@ container = st.container()
 container.subheader("Data Preview: " + option)
 troll_select = container.selectbox('Filter by Troll Type:',['None'] + df.account_type.unique().tolist())
 category_select = container.selectbox('Filter by Troll Category:',['None'] + df.account_category.unique().tolist())
-filter_authors = container.multiselect(label='filter by author',options=df.author.unique().tolist())
+filtered_authors = container.multiselect(label='filter by author',options=df.author.unique().tolist())
 
+dfs = []
+for author in filtered_authors:
+  d = df[df['author'] == author]
+  dfs.append(d)
+
+if len(dfs) > 0:
+  df = pd.concat(df)
+else:
+  pass
 if troll_select == "None" and category_select == 'None':
   container.dataframe(df)
   container.subheader("Descriptive Statistics: " + option)
