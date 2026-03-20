@@ -97,9 +97,9 @@ url = 'https://raw.githubusercontent.com/rotemple/russian-troll-tweets/refs/head
 
 @st.cache_data
 def load_csv(url):
-  return pd.read_csv(url)
+  return pd.read_csv(url,usecols=['author','content','following','followers','account_type','account_category'])
   
-df = load_csv(url+option, usecols=['author','content','following','followers','account_type','account_category'])
+df = load_csv(url+option)
 df_content = df.content.tolist()
 
 
