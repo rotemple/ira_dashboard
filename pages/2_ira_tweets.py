@@ -253,10 +253,12 @@ else:
 # Basic Search
 st.subheader('Keyword Search Results')
 keyword = st.sidebar.text_input(label='Basic Search')
-st.dataframe(search_dataframe(df, keyword))
+searched_df = search_dataframe(df,keyword)
+st.write(searched_df.describe())
+st.dataframe(searched_df)
 
 # Concordancer
-query = st.sidebar.text_input(label='Search the corpus for keywords')
+query = st.sidebar.text_input(label='Search the corpus for keywords in context')
 
 @st.cache_data
 def make_corpus(content):
