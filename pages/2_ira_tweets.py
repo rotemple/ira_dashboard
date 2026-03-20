@@ -119,7 +119,7 @@ for author in filtered_authors:
   dfs.append(d)
 
 if len(dfs) > 0:
-  df = pd.concat(df)
+  df = pd.concat(dfs)
 else:
   pass
 if troll_select == "None" and category_select == 'None':
