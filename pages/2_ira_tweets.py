@@ -69,8 +69,8 @@ def hashtag_extract(x):
 
 
 def search_dataframe(dataframe,query):
-    dataframe['content'] = dataframe.text.str.lower()
-    dataframe['search'] = dataframe.text.str.contains(query)
+    dataframe['content'] = dataframe.content.str.lower()
+    dataframe['search'] = dataframe.content.str.contains(query)
     return dataframe[dataframe['search'] == True]
 
 @st.cache_data
