@@ -181,17 +181,17 @@ st.dataframe(searched_dataframe)
 
 # Concordancer
 
-query = st.sidebar.text_input(label='Search the corpus for keywords in context')
+# query = st.sidebar.text_input(label='Search the corpus for keywords in context')
 
-@st.cache_data
-def make_corpus(content):
-  return Text(nltk.word_tokenize(str(content).lower()))
+# @st.cache_data
+# def make_corpus(content):
+#   return Text(nltk.word_tokenize(str(content).lower()))
   
-corpus = make_corpus(tweets)
-corpus_concordance = corpus.concordance_list(query.lower(),width=150,lines=len(tweets))
-cf = pd.DataFrame({'text':[c.line for c in corpus_concordance]})
-st.subheader('Keyword in Context Search Results')
-st.dataframe(cf)
+# corpus = make_corpus(tweets)
+# corpus_concordance = corpus.concordance_list(query.lower(),width=150,lines=len(tweets))
+# cf = pd.DataFrame({'text':[c.line for c in corpus_concordance]})
+# st.subheader('Keyword in Context Search Results')
+# st.dataframe(cf)
 
    
 
