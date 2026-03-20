@@ -111,7 +111,7 @@ container = st.container()
 container.subheader("Data Preview: " + option)
 troll_select = container.selectbox('Filter by Troll Type:',['None'] + df.account_type.unique().tolist())
 category_select = container.selectbox('Filter by Troll Category:',['None'] + df.account_category.unique().tolist())
-filter_authors = container.checkbox(label='filter by author',key=df.author.unique().tolist())
+filter_authors = container.multiselect(label='filter by author',options=df.author.unique().tolist())
 
 if troll_select == "None" and category_select == 'None':
   container.dataframe(df)
