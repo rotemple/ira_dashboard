@@ -173,6 +173,7 @@ st.download_button(
    key='download-csv'
 )  
 # Basic Search
+st.subheader('Keyword Search Results')
 keyword = st.sidebar.text_input(label='Basic Search')
 st.dataframe(search_dataframe(df, keyword))
 # Concordancer
@@ -186,7 +187,7 @@ def make_corpus(content):
 corpus = make_corpus(tweets)
 corpus_concordance = corpus.concordance_list(query.lower(),width=150,lines=len(tweets))
 cf = pd.DataFrame({'text':[c.line for c in corpus_concordance]})
-st.subheader('Concordance Search Results')
+st.subheader('Keyword in Context Search Results')
 st.dataframe(cf)
 
    
