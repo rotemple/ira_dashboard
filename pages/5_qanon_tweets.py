@@ -80,6 +80,11 @@ def hashtag_extract(x):
 def convert_df(df):
    return df.to_csv(index=False).encode('utf-8')
 
+def search_dataframe(dataframe,query):
+    dataframe['text'] = dataframe.text.str.lower()
+    dataframe['search'] = dataframe.text.str.contains(query)
+    return dataframe[dataframe['search'] == True]
+
 st.set_page_config(page_title='Hannah (2022) QAnon Tweet Dataset')
 
 # Set the title of the Streamlit app
@@ -167,10 +172,13 @@ st.download_button(
    "text/csv",
    key='download-csv'
 )  
+# Basic Search
 
+keyword = st.sidebar.text_input(label='Basic Search')
+st.dataframe(basic_search(df, keyword))
 # Concordancer
 
-query = st.sidebar.text_input(label='Search the corpus for keywords')
+query = st.sidebar.text_input(label='Search the corpus for keywords in context')
 
 @st.cache_data
 def make_corpus(content):
