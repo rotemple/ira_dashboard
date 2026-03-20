@@ -67,6 +67,12 @@ def hashtag_extract(x):
 
     return hashtags
 
+
+def search_dataframe(dataframe,query):
+    dataframe['content'] = dataframe.text.str.lower()
+    dataframe['search'] = dataframe.text.str.contains(query)
+    return dataframe[dataframe['search'] == True]
+
 @st.cache_data
 def convert_df(df):
    return df.to_csv(index=False).encode('utf-8')
@@ -244,9 +250,12 @@ else:
    "text/csv",
    key='download-csv'
 )
+# Basic Search
+st.subheader('Keyword Search Results')
+keyword = st.sidebar.text_input(label='Basic Search')
+st.dataframe(search_dataframe(df, keyword))
 
 # Concordancer
-
 query = st.sidebar.text_input(label='Search the corpus for keywords')
 
 @st.cache_data
