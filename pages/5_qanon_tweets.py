@@ -173,9 +173,8 @@ st.download_button(
    key='download-csv'
 )  
 # Basic Search
-
 keyword = st.sidebar.text_input(label='Basic Search')
-st.dataframe(basic_search(df, keyword))
+st.dataframe(search_dataframe(df, keyword))
 # Concordancer
 
 query = st.sidebar.text_input(label='Search the corpus for keywords in context')
