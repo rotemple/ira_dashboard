@@ -258,18 +258,18 @@ st.write(searched_df.describe())
 st.dataframe(searched_df)
 
 # Concordancer
-query = st.sidebar.text_input(label='Search the corpus for keywords in context')
+# query = st.sidebar.text_input(label='Search the corpus for keywords in context')
 
-@st.cache_data
-def make_corpus(content):
-  return Text(nltk.word_tokenize(str(content).lower()))
+# @st.cache_data
+# def make_corpus(content):
+#   return Text(nltk.word_tokenize(str(content).lower()))
   
-corpus = make_corpus(df_content)
+# corpus = make_corpus(df_content)
 
-corpus_concordance = corpus.concordance_list(query.lower(),width=150,lines=len(df_content))
-cf = pd.DataFrame({'text':[c.line for c in corpus_concordance]})
-st.subheader('Concordance Search Results')
-st.dataframe(cf)
+# corpus_concordance = corpus.concordance_list(query.lower(),width=150,lines=len(df_content))
+# cf = pd.DataFrame({'text':[c.line for c in corpus_concordance]})
+# st.subheader('Concordance Search Results')
+# st.dataframe(cf)
 
     # Display basic statistics
 # container.subheader("Descriptive Statistics: " + option)
