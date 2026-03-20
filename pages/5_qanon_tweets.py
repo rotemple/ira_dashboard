@@ -175,7 +175,10 @@ st.download_button(
 # Basic Search
 st.subheader('Keyword Search Results')
 keyword = st.sidebar.text_input(label='Basic Search')
-st.dataframe(search_dataframe(df, keyword))
+searched_dataframe = search_dataframe(df, keyword)
+st.write(searched_dataframe.describe())
+st.dataframe(searched_dataframe)
+
 # Concordancer
 
 query = st.sidebar.text_input(label='Search the corpus for keywords in context')
