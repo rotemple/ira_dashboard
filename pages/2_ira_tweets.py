@@ -292,4 +292,4 @@ st.dataframe(searched_df)
 #     st.subheader('mention extraction error!')
 
 
-container.write('Streamlit app created by Ryan Omizo')    
+st.sidebar.write('Streamlit app created by Ryan Omizo')    
