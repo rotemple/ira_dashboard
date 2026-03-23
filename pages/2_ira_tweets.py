@@ -268,10 +268,12 @@ st.dataframe(searched_df)
 
 # Create Sample Dataset 
 st.subheader("Create Sampled Dataset")
+fraction = st.number_input('Enter sample size (e.g., .10 or .25)', min_value=.10)
+
 dataset_button = st.button('Click to sample the dataset')
 if dataset_button:
   st.write('Note: samples will be based on account names')
-  gf = pd.DataFrame(df.groupby('author').sample(frac=.10))
+  gf = pd.DataFrame(df.groupby('author').sample(frac=fraction))
   g_csv = convert_df(gf)
   st.download_button(
      "Press to Download Sampled Dataset",
