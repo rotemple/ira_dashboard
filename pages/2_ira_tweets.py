@@ -125,7 +125,7 @@ else:
 if troll_select == "None" and category_select == 'None':
   container.dataframe(df)
   container.subheader("Descriptive Statistics: " + option)
-  container.write(df.describe())
+  #container.write(df.describe())
 
 #get hashtags
   tweets = df.content.tolist()
@@ -162,7 +162,7 @@ elif troll_select == 'None':
   df = df[df['account_category'] == category_select]
   container.dataframe(df)
   container.subheader("Descriptive Statistics: " + option)
-  container.write(df.describe())
+  #container.write(df.describe())
   #get hashtags
   tweets = df.content.tolist()
   try:
@@ -197,7 +197,7 @@ elif category_select == 'None':
   df = df[df['account_type'] == troll_select]
   container.dataframe(df)
   container.subheader("Descriptive Statistics: " + option)
-  container.write(df.describe())
+  #container.write(df.describe())
   #get hashtags
   tweets = df.content.tolist()
   try:
@@ -268,8 +268,21 @@ else:
 st.subheader('Keyword Search Results')
 keyword = st.sidebar.text_input(label='Basic Search')
 searched_df = search_dataframe(df,keyword)
-st.write(searched_df.describe())
+#st.write(searched_df.describe())
 st.dataframe(searched_df)
+
+# Create Sample Dataset 
+st.subheader("Create Sampled Dataset")
+st.write('Note: samples will be based on account names')
+gf = pd.DataFrame(df.groupby('author').sample(frac=.10))
+g_csv = convert_df(gf)
+st.download_button(
+   "Press to Download Sampled Dataset",
+   csv,
+   "sampled_dataset.csv",
+   "text/csv",
+   key='download-csv'
+)
 
 # Concordancer
 # query = st.sidebar.text_input(label='Search the corpus for keywords in context')
