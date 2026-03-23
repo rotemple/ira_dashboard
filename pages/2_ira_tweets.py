@@ -270,7 +270,7 @@ st.dataframe(searched_df)
 st.sidebar.subheader("Create Sampled Dataset")
 fraction = st.sidebar.number_input('Enter sample size (e.g., .10 or .25)', min_value=.10)
 
-dataset_button = sidebar.st.button('Click to sample the dataset')
+dataset_button = st.sidebar.button('Click to sample the dataset')
 if fraction and dataset_button:
   st.sidebar.write('Note: samples will be based on account names')
   gf = pd.DataFrame(df.groupby('author').sample(frac=fraction))
