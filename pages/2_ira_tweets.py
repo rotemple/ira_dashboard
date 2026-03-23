@@ -267,15 +267,15 @@ searched_df = search_dataframe(df,keyword)
 st.dataframe(searched_df)
 
 # Create Sample Dataset 
-sidebar.st.subheader("Create Sampled Dataset")
-fraction = sidebar.st.number_input('Enter sample size (e.g., .10 or .25)', min_value=.10)
+st.sidebar.subheader("Create Sampled Dataset")
+fraction = st.sidebar.number_input('Enter sample size (e.g., .10 or .25)', min_value=.10)
 
 dataset_button = sidebar.st.button('Click to sample the dataset')
 if fraction and dataset_button:
-  sidebar.st.write('Note: samples will be based on account names')
+  st.sidebar.write('Note: samples will be based on account names')
   gf = pd.DataFrame(df.groupby('author').sample(frac=fraction))
   g_csv = convert_df(gf)
-  sidebar.st.download_button(
+  st.sdiebar.download_button(
      "Press to Download Sampled Dataset",
      g_csv,
      "sampled_dataset.csv",
