@@ -10,27 +10,27 @@ import pandas as pd
 import re
 import itertools
 from collections import Counter
-import nltk
-from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords
-from nltk.tokenize import wordpunct_tokenize
-from nltk.corpus import gutenberg
-from nltk.text import Text
+# import nltk
+# from nltk.stem import WordNetLemmatizer
+# from nltk.corpus import stopwords
+# from nltk.tokenize import wordpunct_tokenize
+# from nltk.corpus import gutenberg
+# from nltk.text import Text
 
-@st.cache_data
-def nltk_download():
-  nltk.download('all')
+# @st.cache_data
+# def nltk_download():
+#   nltk.download('all')
 
-nltk_download()
+# nltk_download()
 
-stops = set(stopwords.words('english'))
-wn = WordNetLemmatizer()
-def preprocess(text):
-  tokens = nltk.wordpunct_tokenize(text) #tokenize text
-  filtered_tokens = [token.lower() for token in tokens if token.lower() not in stops and not re.search('\d',token)] #remove stopwords
-  lemmas = [wn.lemmatize(ft) for ft in filtered_tokens] #convert tokens to lemmas
-  final_lemmas = [lemma for lemma in lemmas if len(lemma) > 4] #remove tokens < length 1.
-  return final_lemmas
+# stops = set(stopwords.words('english'))
+# wn = WordNetLemmatizer()
+# def preprocess(text):
+#   tokens = nltk.wordpunct_tokenize(text) #tokenize text
+#   filtered_tokens = [token.lower() for token in tokens if token.lower() not in stops and not re.search('\d',token)] #remove stopwords
+#   lemmas = [wn.lemmatize(ft) for ft in filtered_tokens] #convert tokens to lemmas
+#   final_lemmas = [lemma for lemma in lemmas if len(lemma) > 4] #remove tokens < length 1.
+#   return final_lemmas
 
 def flatten_list(somelist):
         if any(isinstance(el, list) for el in somelist) == False:
@@ -124,7 +124,7 @@ else:
   pass
 if troll_select == "None" and category_select == 'None':
   container.dataframe(df)
-  container.subheader("Descriptive Statistics: " + option)
+  #container.subheader("Descriptive Statistics: " + option)
   #container.write(df.describe())
 
 #get hashtags
@@ -273,16 +273,18 @@ st.dataframe(searched_df)
 
 # Create Sample Dataset 
 st.subheader("Create Sampled Dataset")
-st.write('Note: samples will be based on account names')
-gf = pd.DataFrame(df.groupby('author').sample(frac=.10))
-g_csv = convert_df(gf)
-st.download_button(
-   "Press to Download Sampled Dataset",
-   csv,
-   "sampled_dataset.csv",
-   "text/csv",
-   key='download-csv'
-)
+dataset_button = st.button('Click to sample the dataset')
+if dataset_button:
+  st.write('Note: samples will be based on account names')
+  gf = pd.DataFrame(df.groupby('author').sample(frac=.10))
+  g_csv = convert_df(gf)
+  st.download_button(
+     "Press to Download Sampled Dataset",
+     g_csv,
+     "sampled_dataset.csv",
+     "text/csv",
+     key='download-csv'
+  )
 
 # Concordancer
 # query = st.sidebar.text_input(label='Search the corpus for keywords in context')
