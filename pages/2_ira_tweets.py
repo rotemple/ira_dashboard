@@ -124,8 +124,7 @@ else:
   pass
 if troll_select == "None" and category_select == 'None':
   container.dataframe(df)
-  #container.subheader("Descriptive Statistics: " + option)
-  #container.write(df.describe())
+  
 
 #get hashtags
   tweets = df.content.tolist()
@@ -161,8 +160,7 @@ if troll_select == "None" and category_select == 'None':
 elif troll_select == 'None':
   df = df[df['account_category'] == category_select]
   container.dataframe(df)
-  container.subheader("Descriptive Statistics: " + option)
-  #container.write(df.describe())
+  
   #get hashtags
   tweets = df.content.tolist()
   try:
@@ -196,8 +194,7 @@ elif troll_select == 'None':
 elif category_select == 'None':
   df = df[df['account_type'] == troll_select]
   container.dataframe(df)
-  container.subheader("Descriptive Statistics: " + option)
-  #container.write(df.describe())
+  
   #get hashtags
   tweets = df.content.tolist()
   try:
@@ -230,9 +227,7 @@ elif category_select == 'None':
 else:
   d = df[df['account_type'] == troll_select]
   container.dataframe(d[d['account_category'] == category_select])
-  container.subheader("Descriptive Statistics: " + option)
-  container.write(d.describe())
-
+  
   #get hashtags
   tweets = d.content.tolist()
   try:
@@ -283,7 +278,7 @@ if dataset_button:
      g_csv,
      "sampled_dataset.csv",
      "text/csv",
-     key='download-csv'
+     key='download-sampled-csv'
   )
 
 # Concordancer
