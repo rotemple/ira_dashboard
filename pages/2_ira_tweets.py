@@ -275,7 +275,7 @@ if fraction and dataset_button:
   st.sidebar.write('Note: samples will be based on account names')
   gf = pd.DataFrame(df.groupby('author').sample(frac=fraction))
   g_csv = convert_df(gf)
-  st.sdiebar.download_button(
+  st.sidebar.download_button(
      "Press to Download Sampled Dataset",
      g_csv,
      "sampled_dataset.csv",
