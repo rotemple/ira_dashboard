@@ -60,21 +60,20 @@ container.markdown("""## Data Preview: YouTube Comments""")
 container.dataframe(df)
 
 container.markdown("""## Comments by Video Id""")
-video_select = container.multiselect(label='filter by video id',default=None,options=vdf.video_id.unique().tolist())
+video_select = container.multiselect(label='filter by video id',default=vdf.video_id.unique().tolist()[0],options=vdf.video_id.unique().tolist())
 
 dfs = []
-if video_select != None:
-  try:
-    for video in video_select:
-      d = vdf[vdf['video_id'] == video]
-      comments = flatten_list(flatten_list(d['comments'].tolist()))
-      fd = pd.DataFrame()
-      fd['video_id'] = [video] * len(comments)
-      fd['comment'] = comments
-      dfs.append(fd)
-    fds = pd.concat(dfs)
-  except:
-    st.write('select a video id')
+try:
+  for video in video_select:
+    d = vdf[vdf['video_id'] == video]
+    comments = flatten_list(flatten_list(d['comments'].tolist()))
+    fd = pd.DataFrame()
+    fd['video_id'] = [video] * len(comments)
+    fd['comment'] = comments
+    dfs.append(fd)
+  fds = pd.concat(dfs)
+except:
+  st.write('select a video id')
 
 container.dataframe(fds)
 
