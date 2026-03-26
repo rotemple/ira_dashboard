@@ -70,7 +70,8 @@ for video in video_select:
   fd['video_id'] = [video_id] * len(comments)
   fd['comment'] = comments
   dfs.append(fd)
-  
-container.dataframe(pd.concat(dfs))
+
+fds = pd.concat(dfs)
+container.dataframe(fds)
 
 container.write('Streamlit app created by Ryan Omizo')    
