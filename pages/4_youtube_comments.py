@@ -65,7 +65,7 @@ try:
   for video in video_select:
     d = df[df['video_id'] == video]
     dfs.append(d)
-    st.dataframe(pd.concat(dfs))
+  st.dataframe(pd.concat(dfs))
 except:
   st.dataframe(vdf)
   
