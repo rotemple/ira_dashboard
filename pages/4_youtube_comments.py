@@ -63,13 +63,11 @@ container.markdown("""## Comments by Video Id""")
 video_select = container.multiselect(label='filter by video id',default=vdf.video_id.unique().tolist()[0],options=vdf.video_id.unique().tolist())
 try:
   for video in video_select:
-    d = pd.DataFrame(df.groupby('video_id')['comment'].apply(list)[video])
-    d['video_id'] = [video] * len(d)
+    d = df[df['video_id'] == video]
     dfs.append(d)
-    vdfs = pd.concat(dfs)
-    st.dataframe(vdfs)    
+    st.dataframe(pd.concat(dfs))
 except:
-  st.dataframe(df)
+  st.dataframe(vdf)
   
 
 container.write('Streamlit app created by Ryan Omizo')    
