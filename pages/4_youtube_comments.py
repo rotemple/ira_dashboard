@@ -72,9 +72,10 @@ try:
     fd['comment'] = comments
     dfs.append(fd)
   fds = pd.concat(dfs)
+  container.dataframe(fds)
 except:
   st.write('select a video id')
 
-container.dataframe(fds)
+
 
 container.write('Streamlit app created by Ryan Omizo')    
