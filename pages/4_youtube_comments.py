@@ -64,7 +64,7 @@ video_select = container.multiselect(label='filter by video id',options=vdf.vide
 
 dfs = []
 for video in video_select:
-  d = vdf[vdf['video_id'] == video_id]
+  d = vdf[vdf['video_id'] == video]
   comments = flatten_list(d['comments'].tolist())
   fd = pd.DataFrame()
   fd['video_id'] = [video_id] * len(comments)
