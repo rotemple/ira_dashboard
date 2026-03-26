@@ -15,7 +15,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk.tokenize import wordpunct_tokenize
-
+import ast
 nltk.download('all')
 
   
@@ -66,7 +66,7 @@ dfs = []
 try:
   for video in video_select:
     d = vdf[vdf['video_id'] == video]
-    comments = flatten_list(flatten_list(d['comments'].tolist()))
+    comments = flatten_list(ast.literal_eval(d['comments'].tolist()))
     fd = pd.DataFrame()
     fd['video_id'] = [video] * len(comments)
     fd['comment'] = comments
