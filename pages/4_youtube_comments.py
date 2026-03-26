@@ -60,7 +60,7 @@ container.markdown("""## Data Preview: YouTube Comments""")
 
 dfs = []
 container.markdown("""## Comments by Video Id""")
-video_select = container.multiselect(label='filter by video id',default='Select all',options=vdf.video_id.unique().tolist())
+video_select = container.multiselect(label='filter by video id',default=vdf.video_id.unique().tolist()[0],options=vdf.video_id.unique().tolist())
 try:
   for video in video_select:
     d = pd.DataFrame(df.groupby('video_id')['comment'].apply(list)[video])
