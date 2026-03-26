@@ -61,16 +61,15 @@ container.markdown("""## Data Preview: YouTube Comments""")
 dfs = []
 container.markdown("""## Comments by Video Id""")
 video_select = container.multiselect(label='filter by video id',default=None,options=vdf.video_id.unique().tolist())
-if video_select != None:
+if video_select not None:
   for video in video_select:
     d = pd.DataFrame(df.groupby('video_id')['comment'].apply(list)[video])
     d['video_id'] = [video] * len(d)
     dfs.append(d)
     vdfs = pd.concat(dfs)
-    st.dataframe(vdfs)
-    
+    st.dataframe(vdfs)    
 else:
-  container.dataframe(df)
+  st.dataframe(df)
   
 
 container.write('Streamlit app created by Ryan Omizo')    
