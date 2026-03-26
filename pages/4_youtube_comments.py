@@ -38,7 +38,10 @@ def chunks(l, n):
     """Yield successive n-sized chunks from l."""
     for i in range(0, len(l), n):
         yield l[i:i + n]
-        
+@st.cache_data
+def load_csv(url):
+  df = pd.read_csv(url)
+  return df
 
 # Set the title of the Streamlit app
 st.title("📊 Data Dashboard to Browse YouTube Comemnts to the Trump/Vance Disinformation Campaign Against Haitian Communities in Springfield, OH")
@@ -47,15 +50,27 @@ st.sidebar.write('See https://doi.org/10.5334/johd.283 for the complete dataset 
 # File uploader widget in the sidebar
 
 url = 'https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/pages/youtube_haitian_disinformation_comment_reply_metadata.csv'
-df = pd.read_csv(url)
+df = load_csv(url)
 
 container = st.container()
 container.markdown("""## Data Preview: YouTube Video Information""")
-vdf = pd.read_csv('https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/pages/youtube_haitian_disinformation_video_meta.csv')
+vdf = load_csv('https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/pages/youtube_haitian_disinformation_video_meta.csv')
 container.dataframe(vdf)
 container.markdown("""## Data Preview: YouTube Comments""")
 container.dataframe(df)
 
+container.markdown("""## Comments by Video Id""")
+video_select = container.multiselect(label='filter by video id',options=vdf.video_id.unique().tolist())
 
+dfs = []
+for video in video_select:
+  d = df[df['video_id'] == video_id]
+  comments = flatten_list(d['comments'].tolist())
+  fd = pd.DataFrame()
+  fd['video_id'] = [video_id] * len(comments)
+  fd['comment'] = comments
+  dfs.append(fd)
+  
+container.dataframe(pd.concat(dfs))
 
 container.write('Streamlit app created by Ryan Omizo')    
