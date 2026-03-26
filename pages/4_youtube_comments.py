@@ -67,7 +67,7 @@ try:
     dfs.append(d)
   st.dataframe(pd.concat(dfs))
 except:
-  st.dataframe(vdf)
+  st.dataframe(df)
   
 
 container.write('Streamlit app created by Ryan Omizo')    
