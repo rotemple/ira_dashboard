@@ -65,7 +65,7 @@ video_select = container.multiselect(label='filter by video id',default=vdf.vide
 dfs = []
 fd = vdf.groupby('video_id')['comments'].apply(list)
 for video in video_select:
-  st.write(fd[video])
+  st.write(ast.literal_eval(fd[video]))
 
 
 
