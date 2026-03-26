@@ -58,7 +58,7 @@ vdf = load_csv('https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/he
 container.dataframe(vdf)
 container.markdown("""## Data Preview: YouTube Comments""")
 
-
+dfs = []
 container.markdown("""## Comments by Video Id""")
 video_select = container.multiselect(label='filter by video id',default=vdf.video_id.unique().tolist()[0],options=vdf.video_id.unique().tolist())
 if video_select != None:
