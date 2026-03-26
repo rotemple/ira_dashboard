@@ -66,7 +66,7 @@ dfs = []
 if video_select != None:
   for video in video_select:
     d = vdf[vdf['video_id'] == video]
-    comments = flatten_list(d['comments'].tolist())
+    comments = flatten_list(flatten_list(d['comments'].tolist()))
     fd = pd.DataFrame()
     fd['video_id'] = [video] * len(comments)
     fd['comment'] = comments
