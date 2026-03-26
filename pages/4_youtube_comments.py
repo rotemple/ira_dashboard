@@ -57,16 +57,20 @@ container.markdown("""## Data Preview: YouTube Video Information""")
 vdf = load_csv('https://raw.githubusercontent.com/rotemple/ira_dashboard/refs/heads/main/pages/youtube_haitian_disinformation_video_meta.csv')
 container.dataframe(vdf)
 container.markdown("""## Data Preview: YouTube Comments""")
-container.dataframe(df)
+
 
 container.markdown("""## Comments by Video Id""")
 video_select = container.multiselect(label='filter by video id',default=vdf.video_id.unique().tolist()[0],options=vdf.video_id.unique().tolist())
-
-dfs = []
-fd = vdf.groupby('video_id')['comments'].apply(list)
-for video in video_select:
-  st.write(ast.literal_eval(fd[video]))
-
-
+if video_select != None:
+  for video in video_select:
+    d = pd.DataFrame(df.groupby('video_id')['comment'].apply(list)[video])
+    d['video_id'] = [video] * len(d)
+    dfs.append(d)
+    vdfs = pd.concat(dfs)
+    st.dataframe(vdfs)
+    
+else:
+  container.dataframe(df)
+  
 
 container.write('Streamlit app created by Ryan Omizo')    
