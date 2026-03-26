@@ -71,10 +71,10 @@ if video_select != None:
     fd['video_id'] = [video] * len(comments)
     fd['comment'] = comments
     dfs.append(fd)
+  fds = pd.concat(dfs)
 else:
   st.write('select a video id')
 
-fds = pd.concat(dfs)
 container.dataframe(fds)
 
 container.write('Streamlit app created by Ryan Omizo')    
