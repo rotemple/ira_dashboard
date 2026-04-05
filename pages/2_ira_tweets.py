@@ -265,7 +265,7 @@ keyword = st.sidebar.text_input(label='Basic Search')
 searched_df = search_dataframe(df,keyword)
 #st.write(searched_df.describe())
 st.dataframe(searched_df)
-if keyword not None:
+if keyword:
         st.sidebar.download_button(
      "Press to Download Searched Dataset",
      convert_df(searched_df),
