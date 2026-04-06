@@ -28,6 +28,10 @@ def convert_df(df):
 def load_csv(url):
   return pd.read_csv(url)
 
+@st.cache_data
+def convert_df(df):
+   return df.to_csv(index=False).encode('utf-8')
+
 
 st.header('IRA Facebook Ad Dataset')
 st.markdown('## Reference')
@@ -44,7 +48,8 @@ if column != None:
         )
     },
     hide_index=True,)
-        #st.dataframe(dff)
+        csv = convert_df(dff)
+        st.download_button("Press to Download Filtered CSV",csv,"file.csv","text/csv",key='download-csv')
         
 elif column == None:
         st.data_editor(df,column_config={
@@ -54,6 +59,8 @@ elif column == None:
     },
     hide_index=True,
 )
+        csv = convert_df(df)
+        st.download_button("Press to Download",csv,"file.csv","text/csv",key='download-csv')
         #st.dataframe(df)
 
 
