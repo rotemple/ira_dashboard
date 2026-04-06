@@ -42,7 +42,7 @@ column = st.selectbox('Select Column to Search',[None] + df.columns.tolist())
 query = st.text_input('Search by Keyword')
 if column != None:
         df = search_dataframe(df,query.lower(),column)
-        st.data_editor(dff,column_config={
+        st.data_editor(df,column_config={
         "image": st.column_config.ImageColumn(
             "Preview Image", help="Streamlit app preview screenshots"
         )
