@@ -49,7 +49,7 @@ if column != None:
     },
     hide_index=True,)
         csv = convert_df(df)
-        st.download_button("Press to Download Filtered CSV",csv,"file.csv","text/csv",key='download-csv')
+        #st.download_button("Press to Download Filtered CSV",csv,"file.csv","text/csv",key='download-csv')
         
 elif column == None:
         st.data_editor(df,column_config={
