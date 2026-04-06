@@ -38,7 +38,7 @@ if column:
         )
     },
     hide_index=True,)
-        st.dataframe(dff
+        st.dataframe(dff)
         
 else:
         st.data_editor(df,column_config={
