@@ -41,8 +41,11 @@ st.markdown("""
 """)
 df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/master/site/index.csv')
 df.id = df.id.astype(str)
-column = st.selectbox('Select Column to Search',[None] + df.columns.tolist())
-query = st.text_input('Search by Keyword')
+
+st.markdown("""## Search data by column and keyword""")
+st.write("""Select a column and input a keyword to filter data. You will then have the option of downloading the filtered data in CSV format')
+column = st.selectbox('Select Column to Filter Search',[None] + df.columns.tolist())
+query = st.text_input('Keyword')
 if column != None:
         df = search_dataframe(df,query.lower(),column)
         st.data_editor(df,column_config={
