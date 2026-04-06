@@ -31,8 +31,8 @@ df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/maste
 column = st.selectbox('Select Column to Search',df.columns.tolist())
 query = st.text_input('Search by Keyword')
 if column:
-        dff = st.dataframe(search_dataframe(df,query,column))
-        st.dataframe(dff)
+        st.dataframe(search_dataframe(df,query,column))
+        
 else:
         st.dataframe(df)
 
