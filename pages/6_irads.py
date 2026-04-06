@@ -15,7 +15,7 @@ def chunks(l, n):
     for i in range(0, len(l), n):
         yield l[i:i + n]
 
-def search_dataframe(dataframe,query):
+def search_dataframe(dataframe,query,column):
     dataframe['content'] = dataframe.content.str.lower()
     dataframe['search'] = dataframe.content.str.contains(query)
     return dataframe[dataframe['search'] == True]
@@ -28,7 +28,12 @@ def convert_df(df):
 def load_csv(url):
   return pd.read_csv(url)
 df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/master/site/index.csv')
-
+column = st.selectbox('Select Column to Search',df.columns.tolist())
+query = st.text_input('Search by Keyword')
+if column:
+        df = st.dataframe(search_dataframe(df,query,column))
+else:
+        df
 st.write(df)
 
 
