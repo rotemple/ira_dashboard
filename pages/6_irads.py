@@ -28,7 +28,7 @@ def convert_df(df):
 def load_csv(url):
   return pd.read_csv(url)
 df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/master/site/index.csv')
-
+df.id = df.id.astype(str)
 column = st.selectbox('Select Column to Search',[None] + df.columns.tolist())
 query = st.text_input('Search by Keyword')
 if column != None:
@@ -39,17 +39,17 @@ if column != None:
         )
     },
     hide_index=True,)
-        st.dataframe(dff)
+        #st.dataframe(dff)
         
-# elif column == None:
-#         st.data_editor(df,column_config={
-#         "image": st.column_config.ImageColumn(
-#             "Preview Image", help="Streamlit app preview screenshots"
-#         )
-#     },
-#     hide_index=True,
-# )
-#         st.dataframe(df)
+elif column == None:
+        st.data_editor(df,column_config={
+        "image": st.column_config.ImageColumn(
+            "Preview Image", help="Streamlit app preview screenshots"
+        )
+    },
+    hide_index=True,
+)
+        #st.dataframe(df)
 
 
 
