@@ -41,14 +41,14 @@ df.id = df.id.astype(str)
 column = st.selectbox('Select Column to Search',[None] + df.columns.tolist())
 query = st.text_input('Search by Keyword')
 if column != None:
-        dff = search_dataframe(df,query.lower(),column)
+        df = search_dataframe(df,query.lower(),column)
         st.data_editor(dff,column_config={
         "image": st.column_config.ImageColumn(
             "Preview Image", help="Streamlit app preview screenshots"
         )
     },
     hide_index=True,)
-        csv = convert_df(dff)
+        csv = convert_df(df)
         st.download_button("Press to Download Filtered CSV",csv,"file.csv","text/csv",key='download-csv')
         
 elif column == None:
@@ -59,8 +59,8 @@ elif column == None:
     },
     hide_index=True,
 )
-        csv = convert_df(df)
-        st.download_button("Press to Download",csv,"file.csv","text/csv",key='download-csv')
+csv = convert_df(df)
+st.download_button("Press to Download",csv,"file.csv","text/csv",key='download-csv')
         #st.dataframe(df)
 
 
