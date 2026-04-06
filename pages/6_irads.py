@@ -28,9 +28,10 @@ def convert_df(df):
 def load_csv(url):
   return pd.read_csv(url)
 df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/master/site/index.csv')
-column = st.selectbox('Select Column to Search',df.columns.tolist())
+
+column = st.selectbox('Select Column to Search',[None] + df.columns.tolist())
 query = st.text_input('Search by Keyword')
-if column:
+if column != None:
         dff = search_dataframe(df,query.lower(),column)
         st.data_editor(dff,column_config={
         "image": st.column_config.ImageColumn(
