@@ -41,15 +41,15 @@ if column != None:
     hide_index=True,)
         st.dataframe(dff)
         
-elif column == None:
-        st.data_editor(df,column_config={
-        "image": st.column_config.ImageColumn(
-            "Preview Image", help="Streamlit app preview screenshots"
-        )
-    },
-    hide_index=True,
-)
-        st.dataframe(df)
+# elif column == None:
+#         st.data_editor(df,column_config={
+#         "image": st.column_config.ImageColumn(
+#             "Preview Image", help="Streamlit app preview screenshots"
+#         )
+#     },
+#     hide_index=True,
+# )
+#         st.dataframe(df)
 
 
 
