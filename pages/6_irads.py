@@ -43,7 +43,7 @@ df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/maste
 df.id = df.id.astype(str)
 
 st.markdown("""## Search data by column and keyword""")
-st.write("""Select a column and input a keyword to filter data. You will then have the option of downloading the filtered data in CSV format')
+st.write("""Select a column and input a keyword to filter data. You will then have the option of downloading the filtered data in CSV format""")
 column = st.selectbox('Select Column to Filter Search',[None] + df.columns.tolist())
 query = st.text_input('Keyword')
 if column != None:
