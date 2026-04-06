@@ -34,8 +34,11 @@ def convert_df(df):
 
 
 st.header('IRA Facebook Ad Dataset')
-st.markdown('## Reference')
-st.write("""Lindblad, P., Murphy, N., Pfister, D.S., Styer, M., Summers, E., and Yang, M. Internet Research Agency Ads Dataset. [data file]. Retrieved from https://mith.umd.edu/irads/data.zip.""")
+st.markdown('## References')
+st.markdown("""
+- Lindblad, P., Murphy, N., Pfister, D.S., Styer, M., Summers, E., and Yang, M. Internet Research Agency Ads Dataset. [data file]. Retrieved from https://mith.umd.edu/irads/data.zip.
+- Summers, E. (2022). Umd-mith/irads [Python]. Maryland Institute for Technology in the Humanities. https://github.com/umd-mith/irads (Original work published 2018)
+""")
 df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/master/site/index.csv')
 df.id = df.id.astype(str)
 column = st.selectbox('Select Column to Search',[None] + df.columns.tolist())
