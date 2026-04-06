@@ -16,8 +16,8 @@ def chunks(l, n):
         yield l[i:i + n]
 
 def search_dataframe(dataframe,query,column):
-    dataframe['content'] = dataframe.content.str.lower()
-    dataframe['search'] = dataframe.content.str.contains(query)
+    dataframe[column] = dataframe.column.str.lower()
+    dataframe['search'] = dataframe.column.str.contains(query)
     return dataframe[dataframe['search'] == True]
 
 @st.cache_data
