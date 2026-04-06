@@ -31,7 +31,7 @@ def load_csv(url):
 
 st.header('IRA Facebook Ad Dataset')
 st.markdown('## Reference')
-st.write('Lindblad, P., Murphy, N., Pfister, D.S., Styer, M., Summers, E., and Yang, M. Internet Research Agency Ads Dataset. [data file]. Retrieved from https://mith.umd.edu/irads/data.zip.
+st.write("""Lindblad, P., Murphy, N., Pfister, D.S., Styer, M., Summers, E., and Yang, M. Internet Research Agency Ads Dataset. [data file]. Retrieved from https://mith.umd.edu/irads/data.zip.""")
 df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/master/site/index.csv')
 df.id = df.id.astype(str)
 column = st.selectbox('Select Column to Search',[None] + df.columns.tolist())
