@@ -31,9 +31,23 @@ df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/maste
 column = st.selectbox('Select Column to Search',df.columns.tolist())
 query = st.text_input('Search by Keyword')
 if column:
-        st.dataframe(search_dataframe(df,query,column))
+        dff = search_dataframe(df,query.lower(),column)
+        st.data_editor(dff,column_config={
+        "image": st.column_config.ImageColumn(
+            "Preview Image", help="Streamlit app preview screenshots"
+        )
+    },
+    hide_index=True,)
+        st.dataframe(dff
         
 else:
+        st.data_editor(df,column_config={
+        "image": st.column_config.ImageColumn(
+            "Preview Image", help="Streamlit app preview screenshots"
+        )
+    },
+    hide_index=True,
+)
         st.dataframe(df)
 
 
