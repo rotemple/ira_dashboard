@@ -26,8 +26,7 @@ def convert_df(df):
 
 @st.cache_data
 def load_csv(url):
-  return pd.read_csv(url,usecols=['author','content','following','followers','account_type','account_category','publish_date','post_type'])
-  
+  return pd.read_csv(url)
 df = load_csv('https://raw.githubusercontent.com/rotemple/irads/refs/heads/master/site/index.csv')
 
 st.write(df)
