@@ -8,6 +8,7 @@ Instructions:
 - Upload the coding results from Coder 1 and Coder 2 as .csv files.
 -- Make sure that the coding decisions are in the column named "label"
 -- Make sure code decisions are aligned between the 2 .csv files
+""")
 
 f1 = st.file_uploader('Upload coder 1's result')
 f2 = st.file_uploader('Upload coder 2's result')
