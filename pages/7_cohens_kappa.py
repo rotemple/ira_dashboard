@@ -7,15 +7,15 @@ This app calculates Cohen's Kappa for 2 coders
 Instructions:
 * Upload the coding results from Coder 1 and Coder 2 as .csv files.
 - Make sure that the coding decisions are in the column named "label"
-- Make sure code decisions are aligned between the 2 .csv files
+- Make sure code decisions are aligned between the 2 .csv files (i.e., coders have coded the same rows in the spreadsheet)
 """)
 
 f1 = st.file_uploader("Upload coder 1's result")
 f2 = st.file_uploader("Upload coder 2's result")
 
 try:
-  coder1 = pd.read_csv(f1, usecols=['label'])
-  coder2 = pd.read_csv(f2, usecols=['label'])
+  coder1 = pd.read_csv(f1, usecols=['label']).dropna()
+  coder2 = pd.read_csv(f2, usecols=['label']).dropna()
 
   st.dataframe(coder1)
   st.dataframe(coder2)
