@@ -22,7 +22,7 @@ try:
   st.dataframe(coder2)
   st.markdown('## Accuracy')
   
-  st.write('Accuracy: 'accuracy_score(coder1.label.tolist(), coder2.label.tolist()))
+  st.write('Accuracy: ',accuracy_score(coder1.label.tolist(), coder2.label.tolist()))
 
   st.markdown("""## Cohen's Kappa Score""")
   st.write("Cohen's Kappa Score: ",cohen_kappa_score(coder1.label.tolist(),coder2.label.tolist()))
