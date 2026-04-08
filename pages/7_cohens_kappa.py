@@ -20,6 +20,7 @@ try:
   st.dataframe(coder1)
   st.dataframe(coder2)
   st.markdown("""## Cohen's Kappa Score""")
-  st.write(print(cohen_kappa_score(coder1.label.tolist(),coder2.label.tolist())))
+  st.write(cohen_kappa_score(coder1.label.tolist(),coder2.label.tolist()))
+  st.write(accuracy_score(coder1.label.tolist(), coder2.label.tolist()))
 except:
   pass
