@@ -18,6 +18,6 @@ try:
   coder2 = pd.read_csv(f2, usecols=['label'])
   
   st.markdown("""## Cohen's Kappa Score""")
-  st.write(cohen_kappa_score(coder1,coder2))
+  st.write(cohen_kappa_score(coder1.label.tolist(),coder2.label.tolist()))
 except:
   pass
