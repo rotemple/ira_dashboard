@@ -16,7 +16,9 @@ f2 = st.file_uploader("Upload coder 2's result")
 try:
   coder1 = pd.read_csv(f1, usecols=['label'])
   coder2 = pd.read_csv(f2, usecols=['label'])
-  
+
+  st.dataframe(coder1)
+  st.dataframe(coder2)
   st.markdown("""## Cohen's Kappa Score""")
   st.write(print(cohen_kappa_score(coder1.label.tolist(),coder2.label.tolist())))
 except:
