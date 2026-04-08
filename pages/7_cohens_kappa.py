@@ -17,10 +17,14 @@ try:
   coder1 = pd.read_csv(f1, usecols=['label']).dropna()
   coder2 = pd.read_csv(f2, usecols=['label']).dropna()
 
+  st.markdown('## Coded Data')
   st.dataframe(coder1)
   st.dataframe(coder2)
+  st.markdown('## Accuracy')
+  
+  st.write('Accuracy: 'accuracy_score(coder1.label.tolist(), coder2.label.tolist()))
+
   st.markdown("""## Cohen's Kappa Score""")
-  st.write(cohen_kappa_score(coder1.label.tolist(),coder2.label.tolist()))
-  st.write(accuracy_score(coder1.label.tolist(), coder2.label.tolist()))
+  st.write('Cohen's Kappa Score: ',cohen_kappa_score(coder1.label.tolist(),coder2.label.tolist()))
 except:
   pass
