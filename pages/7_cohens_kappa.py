@@ -10,8 +10,8 @@ Instructions:
 -- Make sure code decisions are aligned between the 2 .csv files
 """)
 
-f1 = st.file_uploader('Upload coder 1's result')
-f2 = st.file_uploader('Upload coder 2's result')
+f1 = st.file_uploader("Upload coder 1's result")
+f2 = st.file_uploader("Upload coder 2's result")
 
 coder1 = pd.read_csv(f1, usecols=['label'])
 coder2 = pd.read_csv(f2, usecols=['label'])
