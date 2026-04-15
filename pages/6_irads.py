@@ -69,7 +69,7 @@ st.plotly_chart(f)
 ff = px.scatter(dff.sort_values(by='created',ascending=False),x='created',y='clicks',hover_data=['description'], title="clicks")
 st.plotly_chart(ff)
 
-fff = px.histogram(dff,x='residence','Geographical Areas Targeted by Frequency')
+fff = px.histogram(dff,x='residence',title='Geographical Areas Targeted by Frequency')
 st.ploty_chart(fff)
 
 csv = convert_df(df)
