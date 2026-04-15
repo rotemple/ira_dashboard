@@ -63,7 +63,7 @@ elif column == None:
     hide_index=True,
 )
 
-f = px.scatter(df.sort_values(by='impressions'),ascending=False,x='id',y='impressions',hover_data=['description'])
+f = px.scatter(df.sort_values(by='impressions',ascending=False),x='id',y='impressions',hover_data=['description'])
 st.plotly_char(f)
 csv = convert_df(df)
 st.download_button("Press to Download",csv,"file.csv","text/csv",key='download-csv')
