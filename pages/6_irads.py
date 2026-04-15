@@ -62,11 +62,11 @@ elif column == None:
     },
     hide_index=True,
 )
- 
-f = px.scatter(df.sort_values(by='impressions',ascending=True),x='id',y='impressions',hover_data=['description'], title="Impressions")
+dff = df.copy() 
+f = px.scatter(dff.sort_values(by='impressions',ascending=True),x='id',y='impressions',hover_data=['description'], title="Impressions")
 st.plotly_chart(f)
 
-ff = px.scatter(df.sort_values(by='clicks',ascending=True),x='id',y='clicks',hover_data=['description'], title="clicks")
+ff = px.scatter(dff.sort_values(by='clicks',ascending=True),x='id',y='clicks',hover_data=['description'], title="clicks")
 st.plotly_chart(ff)
 csv = convert_df(df)
 st.download_button("Press to Download",csv,"file.csv","text/csv",key='download-csv')
