@@ -70,7 +70,7 @@ ff = px.scatter(dff.sort_values(by='created',ascending=False),x='created',y='cli
 st.plotly_chart(ff)
 
 fff = px.histogram(dff,x='residence',title='Geographical Areas Targeted by Frequency')
-st.ploty_chart(fff)
+st.plotly_chart(fff)
 
 csv = convert_df(df)
 st.download_button("Press to Download",csv,"file.csv","text/csv",key='download-csv')
