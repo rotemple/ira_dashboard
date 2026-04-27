@@ -11,9 +11,14 @@ st.markdown("""##Aggregate your codes here
 
 f1 = st.file_uploader("Upload coder 1's result")
 #f2 = st.file_uploader("Upload coder 2's result")
-
+coder1 = pd.read_csv(f1)
+rows = st.selectbox(coder1.columns)
+columns = st.selectbox(coder1.columns)
+values = st.selectbox(coder1.columns)
 try:
-  coder1 = pd.read_csv(f1)
-  st.write(coder1.describe())
+  table = pd.pivot_table(
+      coder1, values=values, index=rows,columns=columns, aggfunc="sum"
+  )
+  st.write(table)
 except:
   pass
