@@ -11,7 +11,7 @@ st.markdown("""##Aggregate your codes here
 
 f1 = st.file_uploader("Upload coder 1's result")
 #f2 = st.file_uploader("Upload coder 2's result")
-coder1 = pd.read_csv(f1)
+coder1 = pd.read_csv(f1, encoding='latin1')
 rows = st.selectbox('Select a Row Value',coder1.columns)
 columns = st.selectbox('Select a Columns Value',coder1.columns)
 values = st.selectbox('Select the Column You Want to Sum',coder1.columns)
