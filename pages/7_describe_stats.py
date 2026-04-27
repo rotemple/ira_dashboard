@@ -13,7 +13,7 @@ f1 = st.file_uploader("Upload coder 1's result")
 #f2 = st.file_uploader("Upload coder 2's result")
 
 try:
-  coder1 = pd.read_csv(f1, usecols=['label']).dropna()
-  st.write(coder1.describe)
+  coder1 = pd.read_csv(f1)
+  st.write(coder1.describe())
 except:
   pass
