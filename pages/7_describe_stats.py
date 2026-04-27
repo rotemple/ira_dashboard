@@ -14,8 +14,6 @@ f1 = st.file_uploader("Upload coder 1's result")
 
 try:
   coder1 = pd.read_csv(f1, usecols=['label']).dropna()
-  #coder2 = pd.read_csv(f2, usecols=['label']).dropna()
-
- st.write(coder1.describe)
+  st.write(coder1.describe)
 except:
   pass
