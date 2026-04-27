@@ -17,7 +17,7 @@ columns = st.selectbox('Select a Columns Value',coder1.columns)
 values = st.selectbox('Select the Column You Want to Sum',coder1.columns)
 try:
   table = pd.pivot_table(
-      coder1, values=values, index=rows,columns=columns, aggfunc="sum"
+      coder1, values=values, index=[rows],columns=[columns], aggfunc="sum"
   )
   st.write(table)
 except:
